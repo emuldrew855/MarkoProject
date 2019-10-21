@@ -1,0 +1,33 @@
+
+
+<site-layout>
+ <@content>
+    <section>
+    	Edwards section
+
+		<button class="expand-btn expand-btn--primary expand-btn--no-text" type="button" aria-expanded="false" aria-label="Expand/Collapse">
+		    <span class="expand-btn__icon"></span>
+		</button>
+
+		<span class="combobox">
+    <span class="combobox__control">
+        <input placeholder="Combobox" role="combobox" type="text" aria-haspopup="listbox" aria-owns="listbox2" disabled />
+        <span class="combobox__icon" aria-hidden="true"></span>
+    </span>
+    <div class="combobox__listbox">
+        <div id="listbox2" class="combobox__options" role="listbox">
+            <div class="combobox__option" role="option">
+                <span>Option 1</span>
+            </div>
+            <div class="combobox__option" role="option">
+                <span>Option 2</span>
+            </div>
+            <div class="combobox__option" role="option">
+                <span>Option 3</span>
+            </div>
+        </div>
+    </div>
+</span>
+    </section> 
+      </@content>
+</site-layout>
