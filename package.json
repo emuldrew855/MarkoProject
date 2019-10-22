@@ -9,7 +9,8 @@
     "express": "^4.17.1",
     "marko": "^4.13.10",
     "marko-starter": "^2.0.4",
-    "marko-widgets": "^6.6.6"
+    "marko-widgets": "^6.6.6",
+    "jquery": "^2"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
