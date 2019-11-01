@@ -2,6 +2,8 @@
   "dependencies": [
     "require: jquery",
     "@ebay/skin",
+    "@ebay/skin/carousel",
+    "@ebay/skin/icon",
     "page.js",
     "custom.less"
   ]
