@@ -30,18 +30,24 @@
     </div>
 </div>
 
-<button id="button" class="btn btn--primary">
+
+<div id="panel">
+   
+<button id="btn" class="btn btn--primary">
     <span class="btn__cell">
         <svg aria-hidden="true" class="btn__icon" focusable="false" height="16" width="16">
             <use xlink:href="#icon-menu"></use>
         </svg>
-        <span>Button</span>
+        <span>Make Request</span>
     </span>
 </button>
-
-<div id="panel">
-    <button id = "btn"> Make Request </button>
 </div>
+
+<form id="userDetails" action="http://localhost:9000/v1" method="post">
+  First name: <input type="text" name="fname" id="fname"><br>
+  Last name: <input type="text" name="lname" id="lname"><br>
+  <input id="sub" type="submit" value="Submit">
+</form>
 
     
     </section> 
