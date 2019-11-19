@@ -5,12 +5,13 @@
   "dependencies": {
     "@ebay/ebayui-core": "^4.3.1",
     "@ebay/skin": "^9.3.0",
+    "axios": "^0.16.2",
     "chromedriver": "^77.0.0",
     "express": "^4.17.1",
+    "jquery": "^2",
     "marko": "^4.13.10",
     "marko-starter": "^2.0.4",
-    "marko-widgets": "^6.6.6",
-    "jquery": "^2"
+    "marko-widgets": "^6.6.6"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
