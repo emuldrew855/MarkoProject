@@ -5,9 +5,9 @@ $(document).ready(() => {
 
 var panel, request; 
 
-const axios = require('axios');
 
 function init() {
+	const axios = require('axios');
 	document.getElementById("sub").onclick = submit; 
 	panel = document.getElementById("panel");
 	var btn = document.getElementById("btn");
