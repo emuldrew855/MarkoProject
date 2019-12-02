@@ -1,0 +1,28 @@
+<site-layout>
+  <@title>Find Non Profit Call</@title>
+  <@content>
+    <section>
+      <div id="panel">
+        <button id="btn" class="btn btn--primary">
+            <span class="btn__cell">
+                <svg aria-hidden="true" class="btn__icon" focusable="false" height="16" width="16">
+                    <use xlink:href="#icon-menu"></use>
+                </svg>
+                <span>Get Non Profit Request</span>
+            </span>
+        </button>
+
+        <p id="response"></p>
+        <img src="charityImage" id="charityImage">
+    </div>    
+
+    <h2> Search for non profit by id: </h2>
+    <form action="http://localhost:9000/v1/FindNonProfit" method="GET" target="_blank">
+      <input type="text" id="keyword" name="nonProfitInput" placeholder="Item Id">
+      <button type="submit" id="submit">Submit</button>
+    </form>
+    </section>
+  </@content>
+</site-layout>
+
+
