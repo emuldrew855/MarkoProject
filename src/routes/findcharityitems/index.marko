@@ -1,29 +1,22 @@
-
 <site-layout>
- <@content>
+  <@content>
     <section>
-    <h1 algin="center"> Find Charity Items </h1>
-
-
-     <div id="panel">
+      <h1 algin="center">Find Charity Items</h1>
+      <div id="panel">
         <button id="findCharityItemsBtn" class="btn btn--primary">
-            <span class="btn__cell">
-                <svg aria-hidden="true" class="btn__icon" focusable="false" height="16" width="16">
-                    <use xlink:href="#icon-menu"></use>
-                </svg>
-                <span>Find Charity Items Request</span>
-            </span>
+          <span class="btn__cell">
+            <svg aria-hidden="true" class="btn__icon" focusable="false" height="16" width="16">
+              <use xlink:href="#icon-menu"/>
+            </svg>
+            <span>Find Charity Items Request</span>
+          </span>
         </button>
-    </div>
-
-
-    <h2> Search Charity Items by Id </h2>
-    <form action="http://localhost:9000/v1/FindCharityItems" method="GET" target="_blank">
-        <input type="text" id="keyword" name="charityItemId" placeholder="Item Id">
+      </div>
+      <h2>Search Charity Items by Id</h2>
+      <form action="http://localhost:9000/v1/FindCharityItems" method="GET" target="_blank">
+        <input type="text" id="keyword" name="charityItemId" placeholder="Item Id"/>
         <button type="submit" id="submit">Submit</button>
-    </form>
-
-    
-    </section> 
-      </@content>
+      </form>
+    </section>
+  </@content>
 </site-layout>

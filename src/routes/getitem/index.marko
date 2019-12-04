@@ -1,28 +1,13 @@
-
 <site-layout>
- <@content>
+  <@content>
     <section>
-    <h1 algin="center"> Get Item </h1>
-
-<div id="panel">
-   
-<button id="getItemBtn" class="btn btn--primary">
-    <span class="btn__cell">
-        <svg aria-hidden="true" class="btn__icon" focusable="false" height="16" width="16">
-            <use xlink:href="#icon-menu"></use>
-        </svg>
-        <span>Get Item Request</span>
-    </span>
-</button>
-
-</div>
-<h2> Search Item by Id </h2>
-<form action="http://localhost:9000/v1/GetItem/" method="GET" target="_blank">
-    <input type="text" id="keyword" name="input" placeholder="Item Id">
-    <button type="submit" id="submit">Submit</button>
-</form>
-
-    
-    </section> 
-      </@content>
+      <h1 algin="center">Get Item</h1>
+      <div id="panel"/>
+      <h2>Search Item by Id</h2>
+      <form action="http://localhost:9000/v1/GetItem/" method="GET" target="_blank">
+        <input type="text" id="keyword" name="input" placeholder="Item Id"/>
+        <button type="submit" id="submit">Submit</button>
+      </form>
+    </section>
+  </@content>
 </site-layout>
