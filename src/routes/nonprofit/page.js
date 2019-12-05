@@ -23,11 +23,13 @@ function getNonProfitRequest() {
 
 var img, img1;
 function showStatus() {
-	console.log('Show Status')
+	parser = new DOMParser();
+	xmlDoc = parser.parseFromString(request.responseText, "text/xml");
+	console.log(xmlDoc.getElementsByTagName("findNonprofitResponse"))
+	console.log(xmlDoc.getElementsByTagName("ack"))
+	console.log(xmlDoc.getElementsByTagName("mission")[0].childNodes[0].nodeValue)
 	if (request.readyState === 4) {
 		if (request.status === 200) {
-			parser = new DOMParser();
-			xmlDoc = parser.parseFromString(request.responseText, "text/xml");
 			if (xmlDoc.getElementsByTagName("ack")[0].childNodes[0].nodeValue == "Warning") {
 				console.log('Warning');
 				warningResponse.innerHTML += "<br> " + "Warning - Ignoring invalid value for the field ExternalId";
@@ -55,7 +57,7 @@ function showStatus() {
 function getNonProfitItems() {
 	console.log('Get Non Profit Items');
 	request = new XMLHttpRequest();
-	var requestUrl = 'http://localhost:9000/v1/AdvancedCharityItems?charityItemId=' + nonProfitId + '&listingType=FixedPrice';
+	var requestUrl = 'http://localhost:9000/v1/AdvancedCharityItems?charityItemId=' +'19790' + '&listingType=FixedPrice';
 	request.open("GET", requestUrl, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
