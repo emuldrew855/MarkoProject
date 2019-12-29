@@ -1,0 +1,17 @@
+<site-layout>
+ <@title>Sample Front End</@title>
+  <@content>
+    <section>
+      <h1 algin="center">Get Item</h1>
+      <div id="panel"/>
+      <h2>Search Product</h2>
+      <form action="http://localhost:9000/v1/SearchItem/" method="GET" target="_blank">
+        <input type="text" id="keyword" name="searchTerm" placeholder="Item Id"/>
+        <button type="submit" id="submit">Submit</button>
+      </form>
+    <br>
+    <button id="animals" class="btn btn--primary"> Animals </button>
+    <button id="children" class="btn btn--primary"> Children </button>
+    </section>
+  </@content>
+</site-layout>
