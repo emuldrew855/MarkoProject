@@ -1,9 +1,15 @@
 var panel, request, clicked_id;
 
 function init() {
-
+    productSearch = document.getElementById("searchTerm");
 }
 document.addEventListener("DOMContentLoaded", init, false);
+
+function searchProduct() {
+    console.log('search product: ' + productSearch.value);
+    localStorage.setItem("searchProduct",productSearch.value);
+    window.location.href = "http://localhost:8080/searchresults";
+}
 
 function charityCauseClick(clicked_id) {
     this.clicked_id = clicked_id;
@@ -23,8 +29,6 @@ function showStatus() {
                 xmlDoc = parser.parseFromString(request.responseText, "text/xml");
                 window.location.href = "http://localhost:8080/charitycause";
                 localStorage.setItem("charityId",clicked_id);
-                console.log(localStorage.getItem("charityId"))
-                window.alert(localStorage.getItem("charityId"));
 				console.log(request.responseText);
 			}
 		}

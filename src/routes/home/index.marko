@@ -2,12 +2,11 @@
  <@title>Sample Front End</@title>
   <@content>
     <section>
-      <h1 algin="center">Get Item</h1>
       <div id="panel"/>
       <h2>Search Product</h2>
       <form action="http://localhost:9000/v1/SearchItem/" method="GET" target="_blank">
-        <input type="text" id="keyword" name="searchTerm" placeholder="Item Id"/>
-        <button type="submit" id="submit">Submit</button>
+        <input type="text" id="searchTerm" name="searchTerm" placeholder="Item Id"/>
+        <button type="submit" id="submit" onClick="searchProduct()">Submit</button>
       </form>
     <br>
 

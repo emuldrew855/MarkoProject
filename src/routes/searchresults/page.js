@@ -1,11 +1,11 @@
-var charityId;
+var searchTerm;
 
 function init() {
-    this.charityId = localStorage.getItem("charityId");
-    console.log(this.charityId);
-    document.getElementById("title").innerHTML = this.charityId;
+    this.searchTerm = localStorage.getItem("searchProduct");
+    document.getElementById("title").innerHTML += this.searchTerm;
+    console.log(this.searchTerm);
     request = new XMLHttpRequest();
-    request.open("GET", 'http://localhost:9000/Paypal/GetCharity?missionArea=' +this.charityId, true);
+    request.open("GET", 'http://localhost:9000/v1/SearchItem?searchTerm=' +this.charityId, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
 	request.onreadystatechange = displayData;
@@ -13,14 +13,15 @@ function init() {
 document.addEventListener("DOMContentLoaded", init, false);
 
 function displayData() {
+    console.log("display data");
     if (request.readyState === 4) {
 		if (request.status === 200) {
 			if (request.status === 200) {
 				parser = new DOMParser();
                 xmlDoc = parser.parseFromString(request.responseText, "text/xml");
                 console.log(request.responseText);
-                panel.innerHTML += "<br> " + xmlDoc.getElementsByTagName("nonprofit_id")[0].childNodes[0].nodeValue;
+                panel.innerHTML += "<br> " + xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
 			}
-		}
-}
+        }
+    }
 }
