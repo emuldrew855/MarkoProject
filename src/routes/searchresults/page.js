@@ -5,7 +5,7 @@ function init() {
     document.getElementById("title").innerHTML += this.searchTerm;
     console.log(this.searchTerm);
     request = new XMLHttpRequest();
-    request.open("GET", 'http://localhost:9000/v1/SearchItem?searchTerm=' +this.charityId, true);
+    request.open("GET", 'http://localhost:9000/v1/SearchItem?searchTerm=' +this.searchTerm, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
 	request.onreadystatechange = displayData;
@@ -20,7 +20,7 @@ function displayData() {
 				parser = new DOMParser();
                 xmlDoc = parser.parseFromString(request.responseText, "text/xml");
                 console.log(request.responseText);
-                panel.innerHTML += "<br> " + xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                panel.innerHTML += "<br> " + xmlDoc.getElementsByTagName("itemId")[0].childNodes[0].nodeValue;
 			}
         }
     }
