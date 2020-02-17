@@ -3,7 +3,7 @@ var charityId;
 function init() {
     this.charityId = localStorage.getItem("charityId");
     console.log(this.charityId);
-    document.getElementById("title").innerHTML = this.charityId;
+    document.getElementById("title").innerHTML ="Charity Cause: " + this.charityId;
     request = new XMLHttpRequest();
     request.open("GET", 'http://localhost:9000/Paypal/GetCharity?missionArea=' +this.charityId, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
@@ -16,11 +16,18 @@ function displayData() {
     if (request.readyState === 4) {
 		if (request.status === 200) {
 			if (request.status === 200) {
-				parser = new DOMParser();
-                xmlDoc = parser.parseFromString(request.responseText, "text/xml");
                 console.log(request.responseText);
-                panel.innerHTML += "<br> " + xmlDoc.getElementsByTagName("nonprofit_id")[0].childNodes[0].nodeValue;
-			}
+                var obj = JSON.parse(request.responseText);
+                for (var i = 0; i < 10; i++) {
+                    console.log(obj.results[i].name);
+                    panel.innerHTML += " " + obj.results[i].name+ "<br>" +
+                        "<img src = \"" + obj.results[i].logo_url + "\">" + "<br>"
+                        + "<button onclick=\"myFunction()\"> View Charity</button>" + "<br>";
+                }
+               // panel.innerHTML += "<br> " + xmlDoc.getElementsByTagName("nonprofit_id")[0].childNodes[0].nodeValue;
+			}else {
+                panel.innerHTML += "No results found";
+            }
 		}
 }
 }
