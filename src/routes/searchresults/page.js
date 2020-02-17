@@ -1,4 +1,4 @@
-var searchTerm;
+var searchTerm, obj;
 const colors = ["red", "green", "blue"];
 var itemSummaries = [];
 
@@ -10,33 +10,33 @@ function init() {
     request.open("GET", 'http://localhost:9000/v1/SearchItem?searchTerm=' + this.searchTerm, true);
     request.setRequestHeader('Content-Type', 'application/xml');
     request.send(null);
-	request.onreadystatechange = displayData;
+    request.onreadystatechange = displayData;
 }
 document.addEventListener("DOMContentLoaded", init, false);
 
-function myFunction(num){
-    console.log('My function! ' + num)
+function viewItem(num) {
+    var itemId = obj.itemSummaries[num].itemId.substring(3,15);
+    console.log('Buying options: ' + obj.itemSummaries[num].epid);
+    console.log(obj.itemSummaries[num].itemId);
+    console.log(itemId);
+    localStorage.setItem("viewItemId",itemId);
+    window.location.href = "http://localhost:8080/viewitem";
 }
 
 function displayData() {
     console.log("display data");
     if (request.readyState === 4) {
         if (request.status === 200) {
-            if (request.status === 200) {
-                console.log(request.responseText);
-                var obj = JSON.parse(request.responseText);
-                for (var i = 0; i < 10; i++) {
-                    itemSummaries = obj.itemSummaries[i];
-                    console.log(obj.itemSummaries[i].itemId);
-                    panel.innerHTML += " " + obj.itemSummaries[i].title + "<br>" +
-                        "<img src = \"" + obj.itemSummaries[i].image.imageUrl + "\">" + "<br>"
-                        + "<button onclick=\"myFunction(i)\"> View Item!</button>" + "<br>";
-                }
-                panel.innerHTML += "Success"
+            console.log(request.responseText);
+            obj = JSON.parse(request.responseText);
+            for (var i = 0; i < 10; i++) {
+                itemSummaries = obj.itemSummaries[i];
+                panel.innerHTML += " " + obj.itemSummaries[i].title + "<br>" +
+                    "<img src = \"" + obj.itemSummaries[i].image.imageUrl + "\">" + "<br>"
+                    + "<button onclick=\"viewItem("+i+")\"> View Item!</button>" + "<br>";
             }
-            else {
-                panel.innerHTML += "No results found";
-            }
+        } else {
+            panel.innerHTML += "No results found";
         }
     }
 }

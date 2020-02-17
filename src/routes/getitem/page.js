@@ -29,8 +29,6 @@ function showStatus() {
 	if (request.readyState === 4) {
 		if (request.status === 200) {
 				const parser = new DOMParser()
-				console.log(request.responseText);
-				console.log(request.responseXML);
 				var obj = request.responseXML; 
 				console.log(obj);
 				xmlDoc = parser.parseFromString(request.responseText, "text/xml");
