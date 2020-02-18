@@ -25,7 +25,7 @@ function displayData() {
             console.log(request.responseText);
             obj = JSON.parse(request.responseText);
             for (var i = 0; i < 10; i++) {
-                panel.innerHTML += " " + obj.results[i].name + "<br>" +
+                panel.innerHTML += " <h3> " + obj.results[i].name + "</h3><br>" +
                     "<img src = \"" + obj.results[i].logo_url + "\">" + "<br>"
                     + "<button onclick=\"viewCharity(" + i + ")\"> View Charity</button>" + "<br>";
             }

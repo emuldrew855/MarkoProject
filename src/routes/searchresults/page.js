@@ -32,7 +32,7 @@ function displayData() {
             for (var i = 0; i < 10; i++) {
                 itemSummaries = obj.itemSummaries[i];
                 panel.innerHTML += " " + obj.itemSummaries[i].title + "<br>" +
-                    "<img src = \"" + obj.itemSummaries[i].image.imageUrl + "\">" + "<br>"
+                    "<img src = \"" + obj.itemSummaries[i].image.imageUrl  + " height=\"250\" width=\"250\">" + "<br>"
                     + "<button onclick=\"viewItem("+i+")\"> View Item!</button>" + "<br>";
             }
         } else {
