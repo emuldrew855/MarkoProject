@@ -15,11 +15,11 @@ function init() {
 document.addEventListener("DOMContentLoaded", init, false);
 
 function viewItem(num) {
-    var itemId = obj.itemSummaries[num].itemId.substring(3,15);
+    var itemId = obj.itemSummaries[num].itemId.substring(3, 15);
     console.log('Buying options: ' + obj.itemSummaries[num].epid);
     console.log(obj.itemSummaries[num].itemId);
     console.log(itemId);
-    localStorage.setItem("viewItemId",itemId);
+    localStorage.setItem("viewItemId", itemId);
     window.location.href = "http://localhost:8080/viewitem";
 }
 
@@ -32,8 +32,8 @@ function displayData() {
             for (var i = 0; i < 10; i++) {
                 itemSummaries = obj.itemSummaries[i];
                 panel.innerHTML += " " + obj.itemSummaries[i].title + "<br>" +
-                    "<img src = \"" + obj.itemSummaries[i].image.imageUrl  + " height=\"250\" width=\"250\">" + "<br>"
-                    + "<button onclick=\"viewItem("+i+")\"> View Item!</button>" + "<br>";
+                    "<img src =\"" + obj.itemSummaries[i].image.imageUrl + "\" height=\"250\" width=\"250\">" + "<br>"
+                    + "<button onclick=\"viewItem(" + i + ")\"> View Item!</button>" + "<br>";
             }
         } else {
             panel.innerHTML += "No results found";
