@@ -26,7 +26,7 @@ function displayData() {
             obj = JSON.parse(request.responseText);
             for (var i = 0; i < 10; i++) {
                 panel.innerHTML += " <h3> " + obj.results[i].name + "</h3><br>" +
-                    "<img src = \"" + obj.results[i].logo_url + "\">" + "<br>"
+                    "<img src = \"" + obj.results[i].logo_url + "\" height=\"250\" width=\"250\">" + "<br>"
                     + "<button onclick=\"viewCharity(" + i + ")\"> View Charity</button>" + "<br>";
             }
         } else {
