@@ -1,9 +1,30 @@
 var panel, request, clicked_id;
+var charityCauses;
 
 function init() {
-    productSearch = document.getElementById("searchTerm");
+	productSearch = document.getElementById("searchTerm");
+	request = new XMLHttpRequest();
+	request.open("GET", '	http://localhost:9000/Paypal/GetCharityCauses', true);
+	request.setRequestHeader('Content-Type', 'application/xml');
+	request.send(null);
+	request.onreadystatechange = getCharityCauses;
 }
 document.addEventListener("DOMContentLoaded", init, false);
+
+function getCharityCauses() {
+	if (request.readyState === 4) {
+		if (request.status === 200) {
+			var obj = JSON.parse(request.responseText);
+			console.log('Get Charity Causes');
+			// Hardcoded 
+			for (var i = 1; i<= 18; i++) {
+				console.log(obj[i]);
+				btnGroup.innerHTML += " " +  "<button id=\""+obj[i] +"\" onClick=\"charityCauseClick(this.id)\" class=\"btn btn--primary\" >" + obj[i] + "</button>";
+			  }
+			console.log(request.responseText);
+		}
+}
+}
 
 function searchProduct() {
     console.log('search product: ' + productSearch.value);
@@ -23,7 +44,6 @@ function charityCauseClick(clicked_id) {
 
 function showStatus() {
 	if (request.readyState === 4) {
-		if (request.status === 200) {
 			if (request.status === 200) {
 				parser = new DOMParser();
                 xmlDoc = parser.parseFromString(request.responseText, "text/xml");
@@ -31,6 +51,5 @@ function showStatus() {
                 localStorage.setItem("charityId",clicked_id);
 				console.log(request.responseText);
 			}
-		}
 	}
 }

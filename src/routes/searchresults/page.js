@@ -31,9 +31,10 @@ function displayData() {
             obj = JSON.parse(request.responseText);
             for (var i = 0; i < 10; i++) {
                 itemSummaries = obj.itemSummaries[i];
+                console.log(obj.itemSummaries[i].image.imageUrl);
                 panel.innerHTML += " " + obj.itemSummaries[i].title + "<br>" +
-                    "<img src =\"" + obj.itemSummaries[i].image.imageUrl + " height=\"250\" width=\"250\">" + "<br>"
-                    + "<button onclick=\"viewItem(" + i + ")\"> View Item!</button>" + "<br>";
+                    "<img src =\""+obj.itemSummaries[i].image.imageUrl+"\" + \">" + "<br>" 
+                    + "<button class=\"btn btn--primary\" onclick=\"viewItem(" + i + ")\"> View Item!</button>" + "<br>";
             }
         } else {
             panel.innerHTML += "No results found";
