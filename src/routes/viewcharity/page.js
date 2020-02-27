@@ -1,4 +1,4 @@
-var nonProfitId, charityItemsObj, charityDataObj;
+var nonProfitId, charityItemsObj, charityDataObj, user;
 
 function init() {
     console.log('View Charity');
@@ -15,6 +15,9 @@ function init() {
     charityItemsRequest.setRequestHeader('Content-Type', 'application/xml');
     charityItemsRequest.send(null);
     charityItemsRequest.onreadystatechange = displayCharityItemData;
+
+    user = localStorage.getItem("activeUser", user);
+    console.log(user);
 }
 document.addEventListener("DOMContentLoaded", init, false);
 
@@ -36,7 +39,11 @@ function viewItem(num) {
     console.log("View Item: " + num);
     console.log('Item Id: ' + charityItemsObj.items.items.item[num].itemId);
     localStorage.setItem("viewItemId", charityItemsObj.items.items.item[num].itemId);
-    window.location.href = "http://localhost:8080/viewitem";
+    if(user.userGroup  == "A") {
+        window.location.href = "http://localhost:8080/viewitem";
+    }else {
+        window.location.href ="http://localhost:8080/viewitemB";
+    }
 }
 
 function displayCharityItemData() {

@@ -1,4 +1,4 @@
-var searchTerm, obj;
+var searchTerm, obj, user, itemId;
 const colors = ["red", "green", "blue"];
 var itemSummaries = [];
 
@@ -6,6 +6,8 @@ function init() {
     this.searchTerm = localStorage.getItem("searchProduct");
     document.getElementById("title").innerHTML += this.searchTerm;
     console.log(this.searchTerm);
+    user = localStorage.getItem("activeUser", user);
+    console.log(user);
     request = new XMLHttpRequest();
     request.open("GET", 'http://localhost:9000/v1/SearchItem?searchTerm=' + this.searchTerm, true);
     request.setRequestHeader('Content-Type', 'application/xml');
@@ -15,12 +17,15 @@ function init() {
 document.addEventListener("DOMContentLoaded", init, false);
 
 function viewItem(num) {
-    var itemId = obj.itemSummaries[num].itemId.substring(3, 15);
-    console.log('Buying options: ' + obj.itemSummaries[num].epid);
-    console.log(obj.itemSummaries[num].itemId);
+    itemId = obj.itemSummaries[num].itemId.substring(3, 15);
     console.log(itemId);
     localStorage.setItem("viewItemId", itemId);
-    window.location.href = "http://localhost:8080/viewitem";
+    console.log("User Group: " + user.userGroup);
+    if(user.userGroup  == "A") {
+        window.location.href = "http://localhost:8080/viewitem";
+    }else {
+        window.location.href ="http://localhost:8080/viewitemB";
+    }
 }
 
 function displayData() {

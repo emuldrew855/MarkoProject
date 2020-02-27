@@ -19,10 +19,12 @@ function signUp() {
 function userCreated() {
     if (request.readyState === 4) {
 		if (request.status === 200) {
-            console.log(request.response);
-            if(request.response == "User Signed Up") {
+            var user = JSON.parse(request.responseText);
+            if(user.userGroup == "A" || user.userGroup == "B") {
                 console.log('User Signed Up');
-                userCreate.innerHTML += "User Signed Up"; 
+                window.alert("User: " + user.username + " signed up!")
+                localStorage.setItem("activeUser",user);
+                window.location.href = "http://localhost:8080/login";
             }else{
                 console.log('User not signed up');
                 userCreate.innerHTML += "Use not signed up"; 

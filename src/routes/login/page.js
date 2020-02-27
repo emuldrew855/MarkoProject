@@ -22,6 +22,7 @@ function permissionGranted() {
             if(request.response == "GrantAccess") {
                 console.log('Access granted');
                 panel.innerHTML += "Access Granted"; 
+                window.location.href = "http://localhost:8080/home";
             }else{
                 console.log('Permission denied');
                 panel.innerHTML += "Permission denied"; 
