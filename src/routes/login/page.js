@@ -10,7 +10,7 @@ function logIn() {
     username = document.getElementById("username");
     password = document.getElementById("password");
     request = new XMLHttpRequest();
-	request.open("GET", '	http://localhost:9000/auth/LogIn?username=' + username + '&password=' +password, true);
+	request.open("GET", '	http://localhost:9000/auth/LogIn?username=' + username.value + '&password=' +password.value, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
 	request.onreadystatechange = permissionGranted;
