@@ -16,6 +16,7 @@ function logIn() {
 	request.onreadystatechange = permissionGranted;
 }
 
+
 function permissionGranted() {
     if (request.readyState === 4) {
 		if (request.status === 200) {
@@ -23,7 +24,12 @@ function permissionGranted() {
                 console.log('Access granted');
                 panel.innerHTML += "Access Granted"; 
                 window.location.href = "http://localhost:8080/home";
-            }else{
+            }else if(request.response == "Admin") {
+                console.log('Admin Access granted');
+                panel.innerHTML += "Adnmin Access Granted"; 
+                window.location.href = "http://localhost:8080/admin";
+            }else
+            {
                 console.log('Permission denied');
                 panel.innerHTML += "Permission denied"; 
             }
