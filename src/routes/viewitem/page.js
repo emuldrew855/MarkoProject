@@ -13,12 +13,22 @@ function init() {
 }
 document.addEventListener("DOMContentLoaded", init, false);
 
+function ebayItem(){
+    console.log("Ebay Item");
+    var jsonString = localStorage.getItem("activeUser");
+    this.user = JSON.parse(jsonString);
+    console.log(this.user);
+    request.open("GET", 'http://localhost:9000/v2/AddUserAction/'+'?userGroup='+this.user.userGroup + "&?viewOnEbay="+true, true);
+	request.setRequestHeader('Content-Type', 'application/xml');
+	request.send(null);
+}
+
 function displayData() {
     if (request.readyState === 4) {
         if (request.status === 200) {
             const parser = new DOMParser()
             console.log(request.responseText);
-            var obj = request.responseXML; 
+            var obj = request.responseText; 
             console.log(obj);
             console.log("Title" + obj.getElementsByTagName("Title")[0].childNodes[0].nodeValue);
             console.log("CategoryName: " + obj.querySelector('Item PictureDetails PictureURL').textContent );
