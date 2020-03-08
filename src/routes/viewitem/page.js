@@ -6,7 +6,7 @@ function init() {
     this.itemId = localStorage.getItem("viewItemId");
     console.log(this.itemId);
     request = new XMLHttpRequest();
-	request.open("GET", 'http://localhost:9000/v1/GetItem/'+'?input='+this.itemId, true);
+	request.open("POST", 'http://localhost:9000/v1/GetItem/'+'?input='+this.itemId, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
 	request.onreadystatechange = displayData;

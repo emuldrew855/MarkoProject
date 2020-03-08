@@ -4,7 +4,7 @@ var charityCauses;
 function init() {
 	productSearch = document.getElementById("searchTerm");
 	request = new XMLHttpRequest();
-	request.open("GET", '	http://localhost:9000/Paypal/GetCharityCauses', true);
+	request.open("POST", '	http://localhost:9000/Paypal/GetCharityCauses', true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
 	request.onreadystatechange = getCharityCauses;
@@ -36,7 +36,7 @@ function charityCauseClick(clicked_id) {
     this.clicked_id = clicked_id;
     console.log(clicked_id);
     request = new XMLHttpRequest();
-	request.open("GET", 'http://localhost:9000/Paypal/GetCharity?missionArea=' + clicked_id, true);
+	request.open("POST", 'http://localhost:9000/Paypal/GetCharity?missionArea=' + clicked_id, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
 	request.onreadystatechange = showStatus;

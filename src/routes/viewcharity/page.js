@@ -5,13 +5,13 @@ function init() {
     this.nonProfitId = localStorage.getItem("nonprofitid");
     console.log(this.nonProfitId);
     charityRequest = new XMLHttpRequest();
-    charityRequest.open("GET", 'http://localhost:9000/v1/FindSingleNonProfit?charityItemId=' + this.nonProfitId, true);
+    charityRequest.open("POST", 'http://localhost:9000/v1/FindSingleNonProfit?charityItemId=' + this.nonProfitId, true);
     charityRequest.setRequestHeader('Content-Type', 'application/xml');
     charityRequest.send(null);
     charityRequest.onreadystatechange = displayCharityData;
 
     charityItemsRequest = new XMLHttpRequest();
-    charityItemsRequest.open("GET", 'http://localhost:9000/v1/AdvancedFindCharityItems?charityId=' + this.nonProfitId, true);
+    charityItemsRequest.open("POST", 'http://localhost:9000/v1/AdvancedFindCharityItems?charityId=' + this.nonProfitId, true);
     charityItemsRequest.setRequestHeader('Content-Type', 'application/xml');
     charityItemsRequest.send(null);
     charityItemsRequest.onreadystatechange = displayCharityItemData;
@@ -39,7 +39,10 @@ function viewItem(num) {
     console.log("View Item: " + num);
     console.log('Item Id: ' + charityItemsObj.items.items.item[num].itemId);
     localStorage.setItem("viewItemId", charityItemsObj.items.items.item[num].itemId);
-    if(user.userGroup  == "A") {
+    var jsonString = localStorage.getItem("activeUser");
+    this.user = JSON.parse(jsonString);
+    console.log(this.user.userGroup);
+    if(this.user.userGroup == "A") {
         window.location.href = "http://localhost:8080/viewitem";
     }else {
         window.location.href ="http://localhost:8080/viewitemB";

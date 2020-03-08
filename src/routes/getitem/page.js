@@ -19,7 +19,7 @@ function doRequest() {
 	keyword = document.getElementById("keyword").value;
 	console.log("Request");
 	request = new XMLHttpRequest();
-	request.open("GET", 'http://localhost:9000/v1/GetItem/'+'?input='+keyword, true);
+	request.open("POST", 'http://localhost:9000/v1/GetItem/'+'?input='+keyword, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
 	request.onreadystatechange = showStatus;
