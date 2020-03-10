@@ -19,6 +19,10 @@ function viewItem(num) {
     console.log(itemId);
     var jsonString = localStorage.getItem("activeUser");
     this.user = JSON.parse(jsonString);
+    byProductSearchRequest = new XMLHttpRequest();
+    byProductSearchRequest.open("POST", 'http://localhost:9000/SearchType/AddSearchType?searchType=' + "byProduct", true);
+    byProductSearchRequest.setRequestHeader('Content-Type', 'application/xml');
+    byProductSearchRequest.send(null);
     console.log(this.user.userGroup);
     localStorage.setItem("viewItemId", itemId);
     if(this.user.userGroup == "A") {

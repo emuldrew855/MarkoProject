@@ -27,8 +27,8 @@ function displayCharityData() {
         if (charityRequest.status === 200) {
             console.log(charityRequest.responseText);
             charityDataObj = JSON.parse(charityRequest.responseText);
-            charityPanel.innerHTML += charityDataObj.nonprofit.name + "<br>" +
-                "<img src = \"" + charityDataObj.nonprofit.logoURL + " height=\"250\" width=\"250\">" + "<hr>"
+            charityPanel.innerHTML += charityDataObj.nonProfit.name + "<br>" +
+                "<img src = \"" + charityDataObj.nonProfit.logoURL + " height=\"250\" width=\"250\">" + "<hr>"
         } else {
             charityPanel.innerHTML += "No Charity results found";
         }
@@ -36,6 +36,10 @@ function displayCharityData() {
 }
 
 function viewItem(num) {
+    charitySearchRequest = new XMLHttpRequest();
+    charitySearchRequest.open("POST", 'http://localhost:9000/SearchType/AddSearchType?searchType=' + "byCharity", true);
+    charitySearchRequest.setRequestHeader('Content-Type', 'application/xml');
+    charitySearchRequest.send(null);
     console.log("View Item: " + num);
     console.log('Item Id: ' + charityItemsObj.items.items.item[num].itemId);
     localStorage.setItem("viewItemId", charityItemsObj.items.items.item[num].itemId);
