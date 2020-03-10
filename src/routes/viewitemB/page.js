@@ -17,6 +17,9 @@ function ebayItem(){
     var jsonString = localStorage.getItem("activeUser");
     this.user = JSON.parse(jsonString);
     console.log(this.user);
+     var viewItemObj = JSON.parse(request.responseText);
+    console.log(viewItemObj.item.listingDetails.viewItemUrl);
+    window.open(viewItemObj.item.listingDetails.viewItemUrl);
     request.open("GET", 'http://localhost:9000/v2/AddUserAction/'+'?userGroup='+this.user.userGroup + "&?viewOnEbay="+true, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
@@ -25,21 +28,24 @@ function ebayItem(){
 function displayData() {
     if (request.readyState === 4) {
         if (request.status === 200) {
+             if (request.readyState === 4) {
+        if (request.status === 200) {
             const parser = new DOMParser()
             console.log(request.responseText);
-            var obj = request.responseText; 
-            console.log(obj);
-            console.log("Title" + obj.getElementsByTagName("Title")[0].childNodes[0].nodeValue);
-            console.log("CategoryName: " + obj.querySelector('Item PictureDetails PictureURL').textContent );
-            console.log(obj.getElementsByTagName("CategoryName")[0].childNodes[0].nodeValue);
-            xmlDoc = parser.parseFromString(request.responseText, "text/xml");
-            panel.innerHTML += "<h3>" + obj.querySelector('Item Title').textContent+ "</h3>" 
-                            + "<img src = \"" +  obj.querySelector('Item PictureDetails PictureURL').textContent +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
-                            +  obj.getElementsByTagName("CategoryName")[0].childNodes[0].nodeValue 
-                            + "<br>" + "£" + obj.querySelector('Item StartPrice').textContent;
+            this.obj = JSON.parse(request.responseText); 
+            console.log(this.obj);
+            panel.innerHTML += "<h3>" + this.obj.item.title+ "</h3>" 
+                            + "<img src = \"" +  this.obj.item.pictureDetails.pictureURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
+                            + "Category: " + this.obj.item.primarycategory.categoryname + "<br>"
+                            + "Condition: " + this.obj.item.conditionDescription + "<br>"
+                            +  "Quantity Sold: " + this.obj.item.sellingStatus.quantitySold + "<br>"
+                            + "Quantity: " + this.obj.item.quantity + "<br>"
+                            + "£" + this.obj.item.startPrice;
 
         } else {
-            panel.innerHTML += "No results found";
+                panel.innerHTML += "No results found";
+            }
         }
     }
+}
 }
