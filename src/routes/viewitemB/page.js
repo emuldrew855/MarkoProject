@@ -20,7 +20,7 @@ function ebayItem(){
      var viewItemObj = JSON.parse(request.responseText);
     console.log(viewItemObj.item.listingDetails.viewItemUrl);
     window.open(viewItemObj.item.listingDetails.viewItemUrl);
-    request.open("GET", 'http://localhost:9000/v2/AddUserAction/'+'?userGroup='+this.user.userGroup + "&?viewOnEbay="+true, true);
+    request.open("POST", 'http://localhost:9000/UserActions/AddUserAction/'+'?userGroup='+this.user.userGroup + "&?viewOnEbay="+true, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
 }

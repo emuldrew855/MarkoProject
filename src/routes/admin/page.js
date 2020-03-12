@@ -13,11 +13,11 @@ function init() {
 	searchTypeRequest.send(null);
 	searchTypeRequest.onreadystatechange = searchType;
 
-	request = new XMLHttpRequest();
-	request.open("GET", 'http://localhost:9000/v2/GetUserActions', true);
-	request.setRequestHeader('Content-Type', 'application/xml');
-	request.send(null);
-	request.onreadystatechange = displayData;
+	userActionRequest = new XMLHttpRequest();
+	userActionRequest.open("GET", 'http://localhost:9000/UserActions/GetUserActions', true);
+	userActionRequest.setRequestHeader('Content-Type', 'application/xml');
+	userActionRequest.send(null);
+	userActionRequest.onreadystatechange = displayData;
 }
 
 function searchType() {
@@ -60,23 +60,19 @@ searchTypeChart.render();
 }
 
 function displayData() {
-	var jsonString = request.response; 
+	var jsonString = userActionRequest.response; 
 	var obj = JSON.parse(jsonString);
-	if (request.readyState === 4) {
-        if (request.status === 200) {
+	if (userActionRequest.readyState === 4) {
+        if (userActionRequest.status === 200) {
 			for (var i = 0; i < obj.length; i++) { 
-				userData[i] = obj[i];
-				for (let key of Object.keys(obj[i])) {
-					if(key=="A")	{
+					if(obj[i].userGroup=="A")	{
 						numOfA= numOfA + 1;
 					}else{
 						numOfB = numOfB + 1;
 					}
-				}
 			}
 	console.log(numOfA);
 	console.log(numOfB);
-	console.log(userData);
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
