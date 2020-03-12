@@ -19,6 +19,8 @@ var admin = {
 }
 function init() {
 	console.log('Log In Page')
+    document.getElementById("error").hidden = true;
+       document.getElementById("success").hidden = true;
 }
 document.addEventListener("DOMContentLoaded", init, false);
 
@@ -38,7 +40,7 @@ function logIn() {
 	request.onreadystatechange = permissionGranted;
 }
 
-
+var falseLogin = false;
 function permissionGranted() {
     if (request.readyState === 4) {
 		if (request.status === 200) {
@@ -46,15 +48,21 @@ function permissionGranted() {
                 console.log('Access granted');
                 panel.innerHTML += "Access Granted"; 
                 window.location.href = "http://localhost:8080/home";
+                 document.getElementById("error").hidden = true;
+                 document.getElementById("success").hidden = false;
             }else if(request.response == "Admin") {
                 console.log('Admin Access granted');
                 localStorage.setItem("activeUser",admin);
                 panel.innerHTML += "Adnmin Access Granted"; 
                 window.location.href = "http://localhost:8080/admin";
+                 document.getElementById("error").hidden = true;
+                 document.getElementById("success").hidden = false;
             }else
             {
                 console.log('Permission denied');
-                panel.innerHTML += "Permission denied"; 
+                this.falseLogin = true;
+                document.getElementById("error").hidden = false;
+                   document.getElementById("success").hidden = true;
             }
         }
     }

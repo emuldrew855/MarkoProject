@@ -4,6 +4,7 @@
       "@ebay/skin",
       "@ebay/skin/carousel",
       "@ebay/skin/icon",
+      "@ebay/skin/svg",
       "page.js"
     ]
   }

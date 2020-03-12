@@ -4,10 +4,19 @@
     <section>
       <div id="panel"/>
       <h2>Search Product</h2>
-      <form action="http://localhost:9000/v1/SearchItem/" method="GET" target="_blank">
-        <input type="text" id="searchTerm" name="searchTerm" placeholder="Product Name"/>
-        <button type="submit" id="submit" onClick="searchProduct()">Submit</button>
-      </form>
+      <span class="textbox">
+        <svg class="icon icon--search-bold" focusable="false" width="16" height="16" aria-hidden="true">
+            <use xlink:href="#icon-search-bold"></use>
+        </svg>
+        <input class="textbox__control" type="text" id="searchTerm" name="searchTerm" placeholder="Product Name" />
+            <button class="btn btn--primary" type="submit" id="submit" onClick="searchProduct()">Submit</button>
+      </span>
+
+      <svg class="icon icon--information" focusable="false" height="24" width="24">
+    <use xlink:href="#icon-information"></use>
+</svg>
+  
+    <br>
     <br>
 
     <div id="btnGroup">

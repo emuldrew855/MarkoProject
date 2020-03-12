@@ -25,9 +25,9 @@ function displayData() {
             console.log(request.responseText);
             obj = JSON.parse(request.responseText);
             for (var i = 0; i < 10; i++) {
-                panel.innerHTML += " <h3> " + obj.results[i].name + "</h3><br>" +
+                panel.innerHTML +=  obj.results[i].name + "<br>" +
                     "<img src = \"" + obj.results[i].logo_url + "\" height=\"250\" width=\"250\">" + "<br>"
-                    + "<button onclick=\"viewCharity(" + i + ")\"> View Charity</button>" + "<br>";
+                    + "<button class=\"btn btn--primary\" onclick=\"viewCharity(" + i + ")\"> View Charity</button>" + "<br><hr>" ;
             }
         } else {
             panel.innerHTML += "No results found";

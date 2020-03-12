@@ -1,9 +1,14 @@
 body {
   font-family: sans-serif;
-  background: #eee;
+  background: #fff;
   padding: 0;
   margin: 0;
   color: #333;
+}
+
+html {
+   position: relative;
+    min-height: 100%;
 }
 
 a {
@@ -17,7 +22,7 @@ a:hover {
 }
 
 header {
-  padding: 2em;
+  padding: 0.5em;
   border-bottom: 1px solid #ccc;
   background: #fff;
   text-align: center;
@@ -58,8 +63,8 @@ p {
 }
 
 .content {
-  padding: 1em 2em;
-  max-width: 30em;
+  padding: 0.5em 1em;
+  max-width: 60em;
   margin: auto;
 }
 
@@ -75,4 +80,17 @@ code {
 pre code {
   display: block;
   color: #396;
+}
+
+.footer {
+  background-color: orange;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 30px;
+  width: 100%;
+  margin-top: -50px;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }

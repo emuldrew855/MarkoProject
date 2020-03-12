@@ -43,7 +43,8 @@ function displayData() {
                 console.log(obj.itemSummaries[i].image.imageUrl);
                 panel.innerHTML += " " + obj.itemSummaries[i].title + "<br>" +
                     "<img src =\""+obj.itemSummaries[i].image.imageUrl+"\" + \">" + "<br>" 
-                    + "<button class=\"btn btn--primary\" onclick=\"viewItem(" + i + ")\"> View Item!</button>" + "<br>";
+                    + "<button class=\"btn btn--primary\" onclick=\"viewItem(" + i + ")\"> View Item!</button>" + "<br>" + "<hr>";
+          
             }
         } else {
             panel.innerHTML += "No results found";
