@@ -7,7 +7,7 @@ function init() {
     document.getElementById("title").innerHTML += this.searchTerm;
     console.log(this.searchTerm);
     request = new XMLHttpRequest();
-    request.open("POST", 'http://localhost:9000/v1/SearchItem?searchTerm=' + this.searchTerm, true);
+    request.open("GET", 'http://localhost:9000/v1/SearchItem?searchTerm=' + this.searchTerm +"&limitOffset=" + "10", true);
     request.setRequestHeader('Content-Type', 'application/xml');
     request.send(null);
     request.onreadystatechange = displayData;

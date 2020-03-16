@@ -3,24 +3,27 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>
-      <${input.title}/>
-    </title>
   </head>
   <body>
     <header>
       <img.logo src="https://theturingtrust.files.wordpress.com/2018/03/ebay-charity.jpg" alt="marko logo"/>
-      <h1>
-        <${input.title}/>
-      </h1>
+    <div id="userNotSignedIn">
       <nav.menu>
         <a href="/login"> Log in </a>
       </nav>
+    </div>
+
+    <div id="userSignedIn">
+      <nav.menu>
+        <a href="/home"> Home </a>
+        <a onClick="signOut()"> Sign Out </a>
+      </nav>
+    </div>
     </header>
     <div.content>
       <${input.content}/>
     </div>
-
+<br> <br> <br> <br> <br> <br>
  <div class="footer">This footer will always be positioned at the bottom of the page, but <strong>not fixed</strong>.</div>
   </body>
 </html>
