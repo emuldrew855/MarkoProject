@@ -25,8 +25,9 @@ function downloadData() {
 	console.log("Download Data");
 	var searchObj = localStorage.getItem("searchTypeObj");
 	var userActionObj = localStorage.getItem("userActionsObj");
-	var searchCSV = ConvertToCSV(searchObj);
-	var userActionCSV = ConvertToCSV(userActionObj);
+	var searchCSV = ConvertToCSV(searchObj, null);
+	var headers = ["User Group", "Viewed Item?"]
+	var userActionCSV = ConvertToCSV(userActionObj, headers);
 
 	  // Convert JSON to CSV & Display CSV
 	  $('#csv').text(ConvertToCSV(searchObj));
@@ -50,9 +51,18 @@ function downloadData() {
         document.body.removeChild(downloadLink);
 }
 
-function ConvertToCSV(objArray) {
+function ConvertToCSV(objArray, headers) {
 	var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
 	var str = '';
+	if(headers == null) {
+		str = '';
+	}else {
+		for(var j = 0; j < headers.length; j++) {
+			console.log(headers[j]);
+			str+= headers[j] + ",";
+		}
+	}
+	str += '\r\n';
 
 	for (var i = 0; i < array.length; i++) {
 		var line = '';
@@ -110,13 +120,15 @@ searchTypeChart.render();
 function displayData() {
 	var jsonString = userActionRequest.response; 
 	this.userActionsObj = JSON.parse(jsonString);
+	console.log(this.userActionsObj);
 	localStorage.setItem("userActionsObj", JSON.stringify(this.userActionsObj))
 	if (userActionRequest.readyState === 4) {
-        if (userActionRequest.status === 200) {
+		if (userActionRequest.status === 200) {
 			for (var i = 0; i < this.userActionsObj.length; i++) { 
-					if(this.userActionsObj[i].userGroup=="A")	{
+				console.log(this.userActionsObj[i].viewedOnEbay)
+					if(this.userActionsObj[i].userGroup==="A" && this.userActionsObj[i].viewedOnEbay===true)	{
 						numOfA= numOfA + 1;
-					}else{
+					}else if(this.userActionsObj[i].userGroup==="B" && this.userActionsObj[i].viewedOnEbay===true){
 						numOfB = numOfB + 1;
 					}
 			}
