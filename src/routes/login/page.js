@@ -46,14 +46,12 @@ function permissionGranted() {
 		if (request.status === 200) {
             if(request.response == "GrantAccess") {
                 console.log('Access granted');
-                panel.innerHTML += "Access Granted"; 
                 window.location.href = "http://localhost:8080/home";
                  document.getElementById("error").hidden = true;
                  document.getElementById("success").hidden = false;
             }else if(request.response == "Admin") {
                 console.log('Admin Access granted');
-                localStorage.setItem("activeUser",admin);
-                panel.innerHTML += "Adnmin Access Granted"; 
+                localStorage.setItem("activeUser",JSON.stringify(admin));
                 window.location.href = "http://localhost:8080/admin";
                  document.getElementById("error").hidden = true;
                  document.getElementById("success").hidden = false;
@@ -62,7 +60,7 @@ function permissionGranted() {
                 console.log('Permission denied');
                 this.falseLogin = true;
                 document.getElementById("error").hidden = false;
-                   document.getElementById("success").hidden = true;
+                document.getElementById("success").hidden = true;
             }
         }
     }

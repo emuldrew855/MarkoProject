@@ -1,5 +1,6 @@
 var userData = [];
 var numOfA,numOfB, numOfCharity, numOfProduct = 0;
+var searchTypeObj, userActionsObj;
 function init() {
 	numOfA = 0;
 	numOfB = 0;
@@ -20,14 +21,61 @@ function init() {
 	userActionRequest.onreadystatechange = displayData;
 }
 
+function downloadData() {
+	console.log("Download Data");
+	var searchObj = localStorage.getItem("searchTypeObj");
+	var userActionObj = localStorage.getItem("userActionsObj");
+	var searchCSV = ConvertToCSV(searchObj);
+	var userActionCSV = ConvertToCSV(userActionObj);
+
+	  // Convert JSON to CSV & Display CSV
+	  $('#csv').text(ConvertToCSV(searchObj));
+
+	  var downloadLink = document.createElement("a");
+        var blob = new Blob(["\ufeff", searchCSV]);
+        var url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        downloadLink.download = "UserSearch.csv";  //Name the file here
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+		document.body.removeChild(downloadLink);
+		
+		var downloadLink = document.createElement("a");
+        var blob = new Blob(["\ufeff", userActionCSV]);
+        var url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        downloadLink.download = "UserAction.csv";  //Name the file here
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+}
+
+function ConvertToCSV(objArray) {
+	var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+	var str = '';
+
+	for (var i = 0; i < array.length; i++) {
+		var line = '';
+		for (var index in array[i]) {
+			if (line != '') line += ','
+
+			line += array[i][index];
+		}
+
+		str += line + '\r\n';
+	}
+	return str;
+}
+
+
 function searchType() {
 	var jsonString = searchTypeRequest.response; 
-	var obj = JSON.parse(jsonString);
-	console.log(obj);
+	this.searchTypeObj = JSON.parse(jsonString);
+	localStorage.setItem("searchTypeObj", JSON.stringify(this.searchTypeObj))
 	if (searchTypeRequest.readyState === 4) {
         if (searchTypeRequest.status === 200) {
-				for (var i = 0; i < obj.length; i++) { 
-					for (let value of Object.values(obj[i])) {
+				for (var i = 0; i < this.searchTypeObj.length; i++) { 
+					for (let value of Object.values(this.searchTypeObj[i])) {
 						if(value=="byProduct")	{
 							numOfProduct = numOfProduct + 1;
 						}else{
@@ -61,11 +109,12 @@ searchTypeChart.render();
 
 function displayData() {
 	var jsonString = userActionRequest.response; 
-	var obj = JSON.parse(jsonString);
+	this.userActionsObj = JSON.parse(jsonString);
+	localStorage.setItem("userActionsObj", JSON.stringify(this.userActionsObj))
 	if (userActionRequest.readyState === 4) {
         if (userActionRequest.status === 200) {
-			for (var i = 0; i < obj.length; i++) { 
-					if(obj[i].userGroup=="A")	{
+			for (var i = 0; i < this.userActionsObj.length; i++) { 
+					if(this.userActionsObj[i].userGroup=="A")	{
 						numOfA= numOfA + 1;
 					}else{
 						numOfB = numOfB + 1;

@@ -5,10 +5,33 @@
       <div id="panel"/>
       <h2>Admin Page</h2>
 
+<details class="details">
+    <summary class="details__summary">
+        <span class="details__label">Show user search graph</span>
+        <span class="details__icon" hidden>
+            <svg class="icon icon--dropdown" focusable="false" aria-hidden="true">
+                <use xlink:href="#icon-dropdown"></use>
+            </svg>
+        </span>
+    </summary>
+   <div id="searchChartContainer" style="height: 370px; width: 100%;"></div>
+</details>
 
-<div id="searchChartContainer" style="height: 370px; width: 100%;"></div>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+<details class="details">
+    <summary class="details__summary">
+        <span class="details__label">Show A/B Test results</span>
+        <span class="details__icon" hidden>
+            <svg class="icon icon--dropdown" focusable="false" aria-hidden="true">
+                <use xlink:href="#icon-dropdown"></use>
+            </svg>
+        </span>
+    </summary>
+   <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+</details>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<button class="btn btn--primary" onclick="downloadData()">Download User Data</button>
 
 <div id="container"></div>
 
