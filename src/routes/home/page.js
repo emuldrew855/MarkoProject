@@ -22,8 +22,10 @@ function getCharityCauses() {
 				btnGroup.innerHTML += " " +  "<button id=\""+obj[i] +"\" onClick=\"charityCauseClick(this.id)\" class=\"btn btn--primary\" >" + obj[i] + "</button>";
 			  }
 			console.log(request.responseText);
+		}else {
+			btnGroup.innerHTML += "No response from server currently";
 		}
-}
+	}
 }
 
 function searchProduct() {

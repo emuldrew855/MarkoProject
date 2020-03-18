@@ -4,14 +4,41 @@
     <section>
       <div id="panel"/>
       <h2>Sign Up</h2>
-        <input type="text" id="username" name="username" placeholder="Username"/>
+        <label class="field__label" for="field1">Username</label>
+            <input class="textbox__control textbox__control--underline" type="text" id="username" name="username" placeholder="Username"/>
         <br>
-        <input type="text" id="password" name="password" placeholder="Password"/>
+            <label class="field__label" for="field2">Password</label>
+                <input class="textbox__control textbox__control--underline" type="password" id="password" name="password" placeholder="Password"/>
         <br>
-        <button type="submit" id="submit" onClick="signUp()">Submit</button>
-
+        <br>
+        <button class="btn btn--primary" type="submit" id="submit" onClick="signUp()">Sign Up</button>
     <br>
 
+    <div id="fail">
+      <section class="page-notice page-notice--information" role="region" aria-labelledby="information-status">
+        <h4 class="page-notice__status" id="information-status">
+            <svg class="icon icon--information-filled" focusable="false" height="24" width="24" aria-label="Information">
+                <use xlink:href="#icon-information-filled"></use>
+            </svg>
+        </h4>
+        <div class="page-notice__content">
+            <p> The server is currently not responding right now, please try again later!</p>
+        </div>
+      </section>
+    </div>
+
+    <div id="userSignedUp">
+        <section class="page-notice page-notice--confirmation" role="region" aria-labelledby="confirmation-status">
+          <h4 class="page-notice__status" id="confirmation-status">
+              <svg class="icon icon--confirmation-filled" focusable="false" height="24" width="24" aria-label="Success">
+                  <use xlink:href="#icon-confirmation-filled"></use>
+              </svg>
+          </h4>
+          <div class="page-notice__content">
+              <p><strong>Congrats!</strong> User succesfully signed up</p>
+          </div>
+        </section>
+    </div>
     <div id="userCreate"> </div>
     
     </section>

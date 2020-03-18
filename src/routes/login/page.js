@@ -20,7 +20,8 @@ var admin = {
 function init() {
 	console.log('Log In Page')
     document.getElementById("error").hidden = true;
-       document.getElementById("success").hidden = true;
+    document.getElementById("success").hidden = true;
+    document.getElementById("information").hidden = true;
 }
 document.addEventListener("DOMContentLoaded", init, false);
 
@@ -62,6 +63,8 @@ function permissionGranted() {
                 document.getElementById("error").hidden = false;
                 document.getElementById("success").hidden = true;
             }
+        }else {
+            document.getElementById("information").hidden = false;
         }
     }
 }
