@@ -9,13 +9,13 @@ function init() {
     console.log("Admin Page");
 
 	searchTypeRequest = new XMLHttpRequest();
-	searchTypeRequest.open("GET", 'http://localhost:9000/SearchType/GetSearchTypes', true);
+	searchTypeRequest.open("GET", 'https://localhost:9443/SearchType/GetSearchTypes', true);
 	searchTypeRequest.setRequestHeader('Content-Type', 'application/xml');
 	searchTypeRequest.send(null);
 	searchTypeRequest.onreadystatechange = searchType;
 
 	userActionRequest = new XMLHttpRequest();
-	userActionRequest.open("GET", 'http://localhost:9000/UserActions/GetUserActions', true);
+	userActionRequest.open("GET", 'https://localhost:9443/UserActions/GetUserActions', true);
 	userActionRequest.setRequestHeader('Content-Type', 'application/xml');
 	userActionRequest.send(null);
 	userActionRequest.onreadystatechange = displayData;

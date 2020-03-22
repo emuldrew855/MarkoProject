@@ -11,13 +11,8 @@ function logIn() {
     console.log('Log In Method');
     username = document.getElementById("username");
     password = document.getElementById("password");
-         if(username.value == "userA") {
-               localStorage.setItem("activeUser",JSON.stringify(userA));
-            }else if(username.value == "userB"){
-               localStorage.setItem("activeUser",JSON.stringify(userB));
-            }
     request = new XMLHttpRequest();
-	request.open("GET", 'http://localhost:9000/auth/LogIn?username=' + username.value + '&password=' +password.value, true);
+	request.open("GET", 'https://localhost:9443/auth/LogIn?username=' + username.value + '&password=' +password.value, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
 	request.onreadystatechange = permissionGranted;
@@ -32,16 +27,15 @@ function permissionGranted() {
                 console.log(username.value);
                 console.log('Access granted');
                 getUserRequest = new XMLHttpRequest(); 
-                getUserRequest.open("POST", "http://localhost:9000/v2/GetUser?username="+username.value,true);
+                getUserRequest.open("POST", "https://localhost:9443/v2/GetUser?username="+username.value,true);
                 getUserRequest.setRequestHeader('Content-Type', 'application/xml');
                 getUserRequest.send(null);
-                getUserRequest.onreadystatechange = setActiveUser;
+                getUserRequest.onreadystatechange = getCode;
                 document.getElementById("error").hidden = true;
                 document.getElementById("success").hidden = false;
             }else if(request.response == "Admin") {
                 console.log('Admin Access granted');
-                localStorage.setItem("activeUser",JSON.stringify(admin));
-                window.location.href = "http://localhost:8080/admin";
+                window.location.href = "https://localhost:8080/admin";
                 document.getElementById("error").hidden = true;
                 document.getElementById("success").hidden = false;
             }else
@@ -55,6 +49,36 @@ function permissionGranted() {
             document.getElementById("information").hidden = false;
         }
     }
+}
+
+function getCode() {
+    console.log("Get code method");
+    getCode = new XMLHttpRequest(); 
+    getCode.open("GET", "https://localhost:9443/token/ebayToken",true);
+    getCode.setRequestHeader('Content-Type', 'application/xml');
+    getCode.send(null);
+    getCode.onreadystatechange = getAccessToken;
+}
+
+function getAccessToken() {
+    console.log("Get Acess token");
+    if (getCode.readyState === 4) {
+		if (getCode.status === 200) {
+            var authUrl =getCode.responseText; 
+            console.log('Auth URL: ' + authUrl);
+            window.open(authUrl, "_blank"); 
+            var requestText = getUserRequest.responseText; 
+            var activeUser = JSON.parse(requestText);
+            console.log(activeUser);
+            localStorage.setItem("activeUser",JSON.stringify(activeUser));
+            window.location.href = "http://localhost:8080/home";
+        }
+    }
+   /*  accessToken = new XMLHttpRequest(); 
+    accessToken.open("GET", "http://localhost:9000/token/accessToken",true);
+    accessToken.setRequestHeader('Content-Type', 'application/xml');
+    accessToken.send(null);
+    accessToken.onreadystatechange = response; */
 }
 
 function setActiveUser() {

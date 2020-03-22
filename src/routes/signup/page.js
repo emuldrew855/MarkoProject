@@ -13,7 +13,7 @@ function signUp() {
     username = document.getElementById("username");
     password = document.getElementById("password");
     request = new XMLHttpRequest();
-	request.open("POST", '	http://localhost:9000/signup/RegisterUser?username=' + username.value + "&password=" + password.value, true);
+	request.open("POST", '	https://localhost:9443/signup/RegisterUser?username=' + username.value + "&password=" + password.value, true);
 	request.setRequestHeader('Content-Type', 'application/xml');
 	request.send(null);
 	request.onreadystatechange = userCreated;

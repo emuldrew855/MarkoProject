@@ -5,13 +5,13 @@ function init() {
     this.nonProfitId = localStorage.getItem("nonprofitid");
     console.log(this.nonProfitId);
     charityRequest = new XMLHttpRequest();
-    charityRequest.open("POST", 'http://localhost:9000/v1/FindSingleNonProfit?charityItemId=' + this.nonProfitId, true);
+    charityRequest.open("POST", 'https://localhost:9443/v1/FindSingleNonProfit?charityItemId=' + this.nonProfitId, true);
     charityRequest.setRequestHeader('Content-Type', 'application/xml');
     charityRequest.send(null);
     charityRequest.onreadystatechange = displayCharityData;
 
     charityItemsRequest = new XMLHttpRequest();
-    charityItemsRequest.open("POST", 'http://localhost:9000/v1/AdvancedFindCharityItems?charityId=' + this.nonProfitId, true);
+    charityItemsRequest.open("POST", 'https://localhost:9443/v1/AdvancedFindCharityItems?charityId=' + this.nonProfitId, true);
     charityItemsRequest.setRequestHeader('Content-Type', 'application/xml');
     charityItemsRequest.send(null);
     charityItemsRequest.onreadystatechange = displayCharityItemData;
@@ -37,7 +37,7 @@ function displayCharityData() {
 
 function viewItem(num) {
     charitySearchRequest = new XMLHttpRequest();
-    charitySearchRequest.open("POST", 'http://localhost:9000/SearchType/AddSearchType?searchType=' + "byCharity", true);
+    charitySearchRequest.open("POST", 'https://localhost:9443/SearchType/AddSearchType?searchType=' + "byCharity", true);
     charitySearchRequest.setRequestHeader('Content-Type', 'application/xml');
     charitySearchRequest.send(null);
     console.log("View Item: " + num);

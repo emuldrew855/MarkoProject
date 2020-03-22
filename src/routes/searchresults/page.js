@@ -7,7 +7,7 @@ function init() {
     document.getElementById("title").innerHTML += this.searchTerm;
     console.log(this.searchTerm);
     request = new XMLHttpRequest();
-    request.open("GET", 'http://localhost:9000/v1/SearchItem?searchTerm=' + this.searchTerm +"&limitOffset=" + "10", true);
+    request.open("GET", 'https://localhost:9443/v1/SearchItem?searchTerm=' + this.searchTerm +"&limitOffset=" + "10", true);
     request.setRequestHeader('Content-Type', 'application/xml');
     request.send(null);
     request.onreadystatechange = displayData;
@@ -20,7 +20,7 @@ function viewItem(num) {
     var jsonString = localStorage.getItem("activeUser");
     this.user = JSON.parse(jsonString);
     byProductSearchRequest = new XMLHttpRequest();
-    byProductSearchRequest.open("POST", 'http://localhost:9000/SearchType/AddSearchType?searchType=' + "byProduct", true);
+    byProductSearchRequest.open("POST", 'https://localhost:9443/SearchType/AddSearchType?searchType=' + "byProduct", true);
     byProductSearchRequest.setRequestHeader('Content-Type', 'application/xml');
     byProductSearchRequest.send(null);
     console.log(this.user.userGroup);

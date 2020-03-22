@@ -5,7 +5,7 @@ function init() {
     console.log(this.charityId);
     document.getElementById("title").innerHTML = "Charity Cause: " + this.charityId;
     request = new XMLHttpRequest();
-    request.open("POST", 'http://localhost:9000/Paypal/GetCharity?missionArea=' + this.charityId, true);
+    request.open("POST", 'https://localhost:9443/Paypal/GetCharity?missionArea=' + this.charityId, true);
     request.setRequestHeader('Content-Type', 'application/xml');
     request.send(null);
     request.onreadystatechange = displayData;
