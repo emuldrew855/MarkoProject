@@ -11,21 +11,20 @@ function logIn() {
     console.log('Log In Method');
     username = document.getElementById("username");
     password = document.getElementById("password");
-    request = new XMLHttpRequest();
-	request.open("GET", 'https://localhost:9443/auth/LogIn?username=' + username.value + '&password=' +password.value, true);
-	request.setRequestHeader('Content-Type', 'application/xml');
-	request.send(null);
-	request.onreadystatechange = permissionGranted;
+    logInRequest = new XMLHttpRequest();
+	logInRequest.open("GET", 'https://localhost:9443/auth/LogIn?username=' + username.value + '&password=' +password.value, true);
+	logInRequest.setRequestHeader('Content-Type', 'application/xml');
+	logInRequest.send(null);
+	logInRequest.onreadystatechange = permissionGranted;
 }
 
 var falseLogin = false;
 function permissionGranted() {
-    if (request.readyState === 4) {
-		if (request.status === 200) {
-            if(request.response != "Admin" || request.response != "NoAcess") {
-                username = document.getElementById("username");
-                console.log(username.value);
+    if (logInRequest.readyState === 4) {
+		if (logInRequest.status === 200) {
+            if(logInRequest.response != "Admin" && logInRequest.response != "NoAcess") {
                 console.log('Access granted');
+                username = document.getElementById("username");
                 getUserRequest = new XMLHttpRequest(); 
                 getUserRequest.open("POST", "https://localhost:9443/v2/GetUser?username="+username.value,true);
                 getUserRequest.setRequestHeader('Content-Type', 'application/xml');
@@ -33,9 +32,13 @@ function permissionGranted() {
                 getUserRequest.onreadystatechange = getCode;
                 document.getElementById("error").hidden = true;
                 document.getElementById("success").hidden = false;
-            }else if(request.response == "Admin") {
+            }else if(logInRequest.response == "Admin") {
                 console.log('Admin Access granted');
-                window.location.href = "https://localhost:8080/admin";
+                getAdminUserRequest = new XMLHttpRequest(); 
+                getAdminUserRequest.open("GET", "https://localhost:9443/auth/GetUser?username=admin",true);
+                getAdminUserRequest.setRequestHeader('Content-Type', 'application/xml');
+                getAdminUserRequest.send(null);
+                getAdminUserRequest.onreadystatechange = setAdminUser;
                 document.getElementById("error").hidden = true;
                 document.getElementById("success").hidden = false;
             }else
@@ -53,39 +56,55 @@ function permissionGranted() {
 
 function getCode() {
     console.log("Get code method");
-    getCode = new XMLHttpRequest(); 
-    getCode.open("GET", "https://localhost:9443/token/ebayToken",true);
-    getCode.setRequestHeader('Content-Type', 'application/xml');
-    getCode.send(null);
-    getCode.onreadystatechange = getAccessToken;
+            getCodeRequest = new XMLHttpRequest(); 
+            getCodeRequest.open("GET", "https://localhost:9443/token/ebayToken",true);
+            getCodeRequest.setRequestHeader('Content-Type', 'application/xml');
+            getCodeRequest.send(null);
+            getCodeRequest.onreadystatechange = getAccessToken;
 }
 
 function getAccessToken() {
     console.log("Get Acess token");
-    if (getCode.readyState === 4) {
-		if (getCode.status === 200) {
-            var authUrl =getCode.responseText; 
+    if (getCodeRequest.readyState === 4) {
+		if (getCodeRequest.status === 200) {
+            var authUrl =getCodeRequest.responseText; 
             console.log('Auth URL: ' + authUrl);
-            window.open(authUrl, "_blank"); 
-            var requestText = getUserRequest.responseText; 
-            var activeUser = JSON.parse(requestText);
+            window.open(authUrl, "_blank");
+            var activeUserName = JSON.parse(getUserRequest.responseText); 
+            console.log(activeUserName.username);
+            getActiveUserRequest = new XMLHttpRequest(); 
+            getActiveUserRequest.open("GET", "https://localhost:9443/auth/GetUser?username="+activeUserName.username,true);
+            getActiveUserRequest.setRequestHeader('Content-Type', 'application/xml');
+            getActiveUserRequest.send(null);
+            getActiveUserRequest.onreadystatechange = setNormalUser;
+        }
+    }
+}
+
+function setAdminUser() {
+    if (getAdminUserRequest.readyState === 4) {
+		if (getAdminUserRequest.status === 200) {
+            var adminUser = JSON.parse(getAdminUserRequest.responseText); 
+            console.log(adminUser);
+            if(adminUser.username == "admin") {
+                console.log("Set Admin User");
+                localStorage.setItem("activeUser",JSON.stringify(adminUser));
+                window.location.href = "http://localhost:8080/admin";
+            }else {
+                console.log("Not Admin user");
+            }
+        }
+    }
+}
+
+function setNormalUser() {
+    if (getActiveUserRequest.readyState === 4) {
+		if (getActiveUserRequest.status === 200) {
+            console.log("Set active user");
+            var activeUser = JSON.parse(getActiveUserRequest.responseText); 
             console.log(activeUser);
             localStorage.setItem("activeUser",JSON.stringify(activeUser));
             window.location.href = "http://localhost:8080/home";
         }
     }
-   /*  accessToken = new XMLHttpRequest(); 
-    accessToken.open("GET", "http://localhost:9000/token/accessToken",true);
-    accessToken.setRequestHeader('Content-Type', 'application/xml');
-    accessToken.send(null);
-    accessToken.onreadystatechange = response; */
-}
-
-function setActiveUser() {
-    console.log("Set active user");
-    var requestText = getUserRequest.responseText; 
-    var activeUser = JSON.parse(requestText);
-    console.log(activeUser);
-    localStorage.setItem("activeUser",JSON.stringify(activeUser));
-    window.location.href = "http://localhost:8080/home";
 }

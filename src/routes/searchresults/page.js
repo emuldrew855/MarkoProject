@@ -1,13 +1,16 @@
-var searchTerm, obj, user, itemId, userGroup;
+var searchTerm, obj, itemId;
 const colors = ["red", "green", "blue"];
 var itemSummaries = [];
 
 function init() {
+    var jsonString = localStorage.getItem("activeUser");
+    this.user = JSON.parse(jsonString);
+    console.log(this.user.userGroup);
     this.searchTerm = localStorage.getItem("searchProduct");
     document.getElementById("title").innerHTML += this.searchTerm;
     console.log(this.searchTerm);
     request = new XMLHttpRequest();
-    request.open("GET", 'https://localhost:9443/v1/SearchItem?searchTerm=' + this.searchTerm +"&limitOffset=" + "10", true);
+    request.open("GET", 'https://localhost:9443/ebay/SearchItem?searchTerm=' + this.searchTerm +"&limitOffset=" + "10", true);
     request.setRequestHeader('Content-Type', 'application/xml');
     request.send(null);
     request.onreadystatechange = displayData;
@@ -15,15 +18,15 @@ function init() {
 document.addEventListener("DOMContentLoaded", init, false);
 
 function viewItem(num) {
-    itemId = obj.itemSummaries[num].itemId.substring(3, 15);
-    console.log(itemId);
-    var jsonString = localStorage.getItem("activeUser");
-    this.user = JSON.parse(jsonString);
     byProductSearchRequest = new XMLHttpRequest();
     byProductSearchRequest.open("POST", 'https://localhost:9443/SearchType/AddSearchType?searchType=' + "byProduct", true);
     byProductSearchRequest.setRequestHeader('Content-Type', 'application/xml');
     byProductSearchRequest.send(null);
+    var jsonString = localStorage.getItem("activeUser");
+    this.user = JSON.parse(jsonString);
     console.log(this.user.userGroup);
+    itemId = obj.itemSummaries[num].itemId.substring(3, 15);
+    console.log(itemId);
     localStorage.setItem("viewItemId", itemId);
     if(this.user.userGroup == "A") {
         window.location.href = "http://localhost:8080/viewitem";

@@ -1,3 +1,14 @@
+class {
+    onCreate() {
+        this.state = {
+            searchTerm: "",
+        };
+        console.log("Pagination");
+        console.log(this.state.searchTerm);
+    }
+}
+
+
 <nav class="pagination" aria-labelledby="pagination-heading" role="navigation">
     <span aria-live="polite" role="status">
         <h2 class="clipped" id="pagination-heading">Results Pagination - Page 1</h2>

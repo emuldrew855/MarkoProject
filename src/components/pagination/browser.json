@@ -1,0 +1,9 @@
+{
+    "dependencies": [
+      "require: jquery",
+      "@ebay/skin",
+      "@ebay/skin/pagination",
+      "page.js"
+    ]
+  }
+  

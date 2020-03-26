@@ -6,7 +6,7 @@ function init() {
     this.itemId = localStorage.getItem("viewItemId");
     console.log(this.itemId);
     getItemRequest = new XMLHttpRequest();
-	getItemRequest.open("POST", 'https://localhost:9443/v1/GetItem/'+'?input='+this.itemId, true);
+	getItemRequest.open("POST", 'https://localhost:9443/ebay/GetItem/'+'?input='+this.itemId, true);
 	getItemRequest.setRequestHeader('Content-Type', 'application/xml');
 	getItemRequest.send(null);
 	getItemRequest.onreadystatechange = displayData;
