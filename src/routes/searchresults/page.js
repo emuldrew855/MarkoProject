@@ -3,9 +3,6 @@ const colors = ["red", "green", "blue"];
 var itemSummaries = [];
 
 function init() {
-    var jsonString = localStorage.getItem("activeUser");
-    this.user = JSON.parse(jsonString);
-    console.log(this.user.userGroup);
     this.searchTerm = localStorage.getItem("searchProduct");
     document.getElementById("title").innerHTML += this.searchTerm;
     console.log(this.searchTerm);
@@ -46,9 +43,12 @@ function displayData() {
                 console.log(obj.itemSummaries[i].image.imageUrl);
                 panel.innerHTML += " " + obj.itemSummaries[i].title + "<br>" +
                     "<img src =\""+obj.itemSummaries[i].image.imageUrl+"\" + \">" + "<br>" 
-                    + "<button class=\"btn btn--primary\" onclick=\"viewItem(" + i + ")\"> View Item!</button>" + "<br>" + "<hr>";
-          
+                    + "<button class=\"btn btn--primary\" onclick=\"viewItem(" + i + ")\"> View Item!</button>" + "<br>" + "<hr>"
             }
+           console.log(obj);
+           pagination.innerHTML += "<pagination state=\"" + obj.total + "\"> </pagination>"; 
+           pagination.innerHTML += "<pagination> </pagination>";
+           pagination.innerHTML += "Test";
         } else {
             panel.innerHTML += "No results found";
         }

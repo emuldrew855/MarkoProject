@@ -7,9 +7,10 @@
       <h1 id="title" algin="center">Search Results </h1>
      <div id="panel">
      </div>
-
-<pagination state.searchTerm="test"> </pagination>
-
+<!-- 
+    <pagination this.state.currentPage = input.currentPage 
+                on-pagination-clicked("onPaginationClicked") />  -->
+                
 <nav class="pagination" aria-labelledby="pagination-heading" role="navigation">
     <span aria-live="polite" role="status">
         <h2 class="clipped" id="pagination-heading">Results Pagination - Page 1</h2>
@@ -21,13 +22,13 @@
     </a>
     <ol class="pagination__items">
         <li>
-            <a aria-current="page" href="http://localhost:9000/v1/SearchItem?searchTerm=Drone&limitOffset=10" class="pagination__item">1</a>
+            <a aria-current="page" href="https://localhost:9443/ebay/SearchItem?searchTerm=Drone&limitOffset=10" class="pagination__item">1</a>
         </li>
         <li>
-            <a href="http://localhost:9000/v1/SearchItem?searchTerm=Drone&limitOffset=20" class="pagination__item">2</a>
+            <a href="https://localhost:9443/ebay/SearchItem?searchTerm=Drone&limitOffset=20" class="pagination__item">2</a>
         </li>
         <li>
-            <a href="http://localhost:9000/v1/SearchItem?searchTerm=Drone&limitOffset=30" class="pagination__item">3</a>
+            <a href="https://localhost:9443/ebay/SearchItem?searchTerm=Drone&limitOffset=30" class="pagination__item">3</a>
         </li>
         ...
     </ol>

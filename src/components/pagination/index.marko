@@ -1,10 +1,23 @@
+<!-- import * from "./helper.js" as BACKEND_HELPER;
+
 class {
-    onCreate() {
-        this.state = {
-            searchTerm: "",
-        };
+    onCreate(input) {
+        console.log("This Input: " + input);
+        this.state = { };
+        this.state.currentPage = input.currentPage;
+        this.state.currentOffSet = input.currentOffset;
+        this.state.currentLimit = input.currentLimit;
+        this.state.numElementsPerpage = input.numElementsPerpage; 
         console.log("Pagination");
         console.log(this.state.searchTerm);
+    }
+
+    onPaginationClicked(event, pageNum, offset, limit, numPerPage) {
+        // 
+        BACKEND_HELPER.fetchPage(pageNum, offset, limit, numPerPage, function(res) {
+            // We got a response!
+            this.state.currentPage = res.
+        })
     }
 }
 
@@ -20,13 +33,13 @@ class {
     </a>
     <ol class="pagination__items">
         <li>
-            <a aria-current="page" href="http://localhost:9000/v1/SearchItem?searchTerm=Drone&limitOffset=10" class="pagination__item">1</a>
+            <a aria-current="page" href="https://localhost:9443/ebay/SearchItem?searchTerm=Drone&limitOffset=10" class="pagination__item">1</a>
         </li>
         <li>
-            <a href="http://localhost:9000/v1/SearchItem?searchTerm=Drone&limitOffset=20" class="pagination__item">2</a>
+            <a href="https://localhost:9443/ebay/SearchItem?searchTerm=Drone&limitOffset=20" class="pagination__item">2</a>
         </li>
         <li>
-            <a href="http://localhost:9000/v1/SearchItem?searchTerm=Drone&limitOffset=30" class="pagination__item">3</a>
+            <a href="https://localhost:9443/ebay/SearchItem?searchTerm=Drone&limitOffset=30" class="pagination__item">3</a>
         </li>
         ...
     </ol>
@@ -35,4 +48,4 @@ class {
             <use xlink:href="#icon-pagination-next"></use>
         </svg>
     </a>
-</nav>
+</nav> -->

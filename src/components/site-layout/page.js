@@ -24,8 +24,24 @@ function init() {
 
 function signOut() {
     console.log("Sign Out!");
-    localStorage.setItem("activeUser",null);
-    window.location.href = "http://localhost:8080";
+    var jsonString = localStorage.getItem("activeUser");
+    var activeUser = JSON.parse(jsonString);
+    console.log(activeUser);
+    console.log(activeUser.username);
+    logOutRequest = new XMLHttpRequest();
+	logOutRequest.open("POST", 'https://localhost:9443/auth/SignOut?username=' + activeUser.username, true);
+	logOutRequest.setRequestHeader('Content-Type', 'application/xml');
+	logOutRequest.send(null);
+	logOutRequest.onreadystatechange = signOutSubmission;
+}
+
+function signOutSubmission() {
+    if (request.readyState === 4) {
+        if (request.status === 200) {
+            localStorage.getItem("activeUser", null);
+            window.location.href = "http://localhost:8080";
+        }
+    }
 }
 
 document.addEventListener("DOMContentLoaded", init, false);
