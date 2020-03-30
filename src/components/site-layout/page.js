@@ -4,6 +4,7 @@ function init() {
   console.log("Site layout");
   var jsonString = localStorage.getItem("activeUser");
   this.user = JSON.parse(jsonString);
+  console.log(this.user);
   if(this.user == null) {
       console.log('No User Signed in');
       document.getElementById("userNotSignedIn").hidden = false;
@@ -36,9 +37,10 @@ function signOut() {
 }
 
 function signOutSubmission() {
-    if (request.readyState === 4) {
-        if (request.status === 200) {
-            localStorage.getItem("activeUser", null);
+    if (logOutRequest.readyState === 4) {
+        if (logOutRequest.status === 200) {
+            console.log("Sign out confirmed");
+            localStorage.setItem("activeUser", null);
             window.location.href = "http://localhost:8080";
         }
     }
