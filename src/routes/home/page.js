@@ -30,7 +30,8 @@ function getCharityCauses() {
 
 function searchProduct() {
     console.log('search product: ' + productSearch.value);
-    localStorage.setItem("searchProduct",productSearch.value);
+	localStorage.setItem("searchProduct",productSearch.value);
+	localStorage.setItem("searchResultsPage", 10);
     window.location.href = "http://localhost:8080/searchresults";
 }
 

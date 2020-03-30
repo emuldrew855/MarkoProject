@@ -29,12 +29,17 @@ function ebayItem(){
 function displayData() {
     if (getItemRequest.readyState === 4) {
         if (getItemRequest.status === 200) {
-             if (getItemRequest.readyState === 4) {
-        if (getItemRequest.status === 200) {
             console.log(getItemRequest.responseText);
             this.obj = JSON.parse(getItemRequest.responseText); 
             console.log(this.obj);
-            panel.innerHTML += "<h3>" + this.obj.item.title+ "</h3>" 
+            panel.innerHTML += "<h2> Charity Info </h2> <br>" 
+                            + "<h3>" + this.obj.item.charity.charityName + "</h3>"
+                            + "<img src = \"" +  this.obj.item.charity.logoURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
+                            + "Mission: " + this.obj.item.charity.mission  +  "<br>"
+                            + "Donation Percent: "+  this.obj.item.charity.donationPercent + "%"
+                            + "<hr>"
+                            + "<h2> Product Info </h2>" 
+                            + "<h3>" + this.obj.item.title+ "</h3>" 
                             + "<img src = \"" +  this.obj.item.pictureDetails.pictureURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
                             + "Category: " + this.obj.item.primarycategory.categoryname + "<br>"
                             + "Condition: " + this.obj.item.conditionDescription + "<br>"
@@ -46,6 +51,4 @@ function displayData() {
                 panel.innerHTML += "No results found";
             }
         }
-    }
-}
 }
