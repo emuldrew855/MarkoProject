@@ -59,13 +59,14 @@ function displayCharityItemData() {
         if (charityItemsRequest.status === 200) {
             console.log(charityItemsRequest.responseText);
             charityItemsObj = JSON.parse(charityItemsRequest.responseText);
-            for (var i = 0; i < 10; i++) {
-                charityItemsPanel.innerHTML += "<h4>" + charityItemsObj.items.items.item[i].title + " </h4> "
-                    + "<img src =\"" + charityItemsObj.items.items.item[i].itemImageInfo[0].primaryImageURL + "\"" + ">" + "<br>"
-                    + "<button class=\"btn btn--primary\" onclick=\"viewItem(" + i + ")\"> View Item!</button>" + "<br><hr>";
-                if (typeof charityItemsObj.items.items.item[i].itemImageInfo[0] != undefined) {
-                    console.log("image exists");
-                }
+            if( charityItemsObj.items.items == null) {
+                charityItemsPanel.innerHTML += "This charity is currently not selling any items";
+            }else {
+                for (var i = 0; i < 10; i++) {
+                    charityItemsPanel.innerHTML += "<h4>" + charityItemsObj.items.items.item[i].title + " </h4> "
+                        + "<img src =\"" + charityItemsObj.items.items.item[i].itemImageInfo[0].primaryImageURL + "\"" + ">" + "<br>"
+                        + "<button class=\"btn btn--primary\" onclick=\"viewItem(" + i + ")\"> View Item!</button>" + "<br><hr>";
+                    }
             }
         } else {
             charityItemsPanel.innerHTML += "No Charity products results found";
