@@ -38,7 +38,8 @@ function displayData() {
             console.log(getItemRequest.responseText);
             this.obj = JSON.parse(getItemRequest.responseText); 
             console.log(this.obj);
-            panel.innerHTML += "<h3>" + this.obj.item.title+ "</h3>" 
+            panel.innerHTML += "<h2> Product Info </h2>" 
+                            +"<h3>" + this.obj.item.title+ "</h3>" 
                             + "<img src = \"" +  this.obj.item.pictureDetails.pictureURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
                             + this.obj.item.primarycategory.categoryname
                             + "<br>" + "£" + this.obj.item.startPrice;

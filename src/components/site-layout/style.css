@@ -22,7 +22,6 @@ a:hover {
 }
 
 header {
-  padding: 0.3em;
   border-bottom: 1px solid #ccc;
   background: #fff;
   text-align: center;
@@ -30,13 +29,12 @@ header {
 
 nav.menu a {
   display: inline-block;
-  padding: 0.3em 1em;
+  padding: 0.3em 0.5em;
 }
 
 img.logo {
   width: 160px;
-  height: 88px;
-  margin-bottom: 1em;
+  height: 160px;
 }
 
 h1 {
@@ -64,7 +62,7 @@ p {
 
 .content {
   padding: 0.5em 1em;
-  max-width: 60em;
+  max-width: 70em;
   margin: auto;
 }
 

@@ -2,12 +2,19 @@
   <@title>eBay Test Frontend</@title>
   <@content>
     <section>
-      <h2>Hello!</h2>
-      <p>
-        This is a basic front UI to help test api calls
-      </p>
+      <section class="page-notice page-notice--information" role="region" aria-labelledby="information-status">
+    <h4 class="page-notice__status" id="information-status">
+        <svg class="icon icon--information-filled" focusable="false" height="24" width="24" aria-label="Information">
+            <use xlink:href="#icon-information-filled"></use>
+        </svg>
+    </h4>
+    <div class="page-notice__content">
+        <p><strong>Welcome!</strong><br> eBay for Charity is an eBay program allowing sellers to donate a portion of the proceeds of their sales ranging from 10-100% to a non-profit they care about.
+          Buyers can in turn choose to purchase items for sellers supporting causes they care about. <br> Please log in to continue <a href="/login">Log In</a>.</p>
+    </div>
+</section>
+ 
     </section>
-    <section>
-    </section>
+
   </@content>
 </site-layout>

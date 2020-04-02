@@ -24,8 +24,15 @@ function displayData() {
             console.log(request.responseText);
             obj = JSON.parse(request.responseText);
             for (var i = 0; i < 10; i++) {
-                panel.innerHTML +=  obj[i].name + "<br>" +
+                var description = "";
+                if(obj[i].description == null) {
+                    description = "No description Available"
+                 } else{
+                   description = obj[i].description;
+                 }
+                panel.innerHTML +=  "</h3>" + obj[i].name + "</h3> <br>" +
                     "<img src = \"" + obj[i].logo_url + "\" height=\"250\" width=\"250\">" + "<br>"
+                    + description + "<br>"
                     + "<button class=\"btn btn--primary\" onclick=\"selectCharity(" + i + ")\"> View Charity</button>" + "<br><hr>" ;
             }
         } else {
