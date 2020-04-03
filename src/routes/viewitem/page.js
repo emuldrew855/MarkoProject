@@ -35,9 +35,11 @@ function ebayItem(){
 function displayData() {
     if (getItemRequest.readyState === 4) {
         if (getItemRequest.status === 200) {
-            console.log(getItemRequest.responseText);
             this.obj = JSON.parse(getItemRequest.responseText); 
             console.log(this.obj);
+            if(this.obj.item.charity == null) {
+                console.log("No charity data available");
+            }
             panel.innerHTML += "<h2> Product Info </h2>" 
                             +"<h3>" + this.obj.item.title+ "</h3>" 
                             + "<img src = \"" +  this.obj.item.pictureDetails.pictureURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"

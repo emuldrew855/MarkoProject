@@ -27,10 +27,10 @@ function displayCharityData() {
         if (charityRequest.status === 200) {
             console.log(charityRequest.responseText);
             charityDataObj = JSON.parse(charityRequest.responseText);
-            charityPanel.innerHTML += charityDataObj.nonProfit.name + "<br>" +
+            charityPanel.innerHTML += "<h2>"+ charityDataObj.nonProfit.name + "</h2> <br>" +
                 "<img src = \"" + charityDataObj.nonProfit.logoURL + " height=\"250\" width=\"250\">" + "<hr>"
         } else {
-            charityPanel.innerHTML += "No Charity results found";
+            charityPanel.innerHTML += "Charity data is currently not available";
         }
     }
 }

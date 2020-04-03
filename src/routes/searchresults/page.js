@@ -3,16 +3,17 @@ const colors = ["red", "green", "blue"];
 var itemSummaries = [];
 
 function init() {
-    var limitOffset = localStorage.getItem("searchResultsPage");
-    console.log("limitOffset: " + limitOffset);
+    var limit = localStorage.getItem("limit");
+    var offset = localStorage.getItem("offset");
     this.searchTerm = localStorage.getItem("searchProduct");
     document.getElementById("title").innerHTML += this.searchTerm;
-    console.log(this.searchTerm);
-    request = new XMLHttpRequest();
-    request.open("GET", 'https://localhost:9443/ebay/SearchItem?searchTerm=' + this.searchTerm +"&limitOffset=" + limitOffset, true);
-    request.setRequestHeader('Content-Type', 'application/xml');
-    request.send(null);
-    request.onreadystatechange = displayData;
+    console.log("Search Term: " + this.searchTerm);
+    searchProductRequest = new XMLHttpRequest();
+    searchProductRequest.open("GET", 'https://localhost:9443/ebay/SearchItem?searchTerm=' + this.searchTerm 
+    +"&limit=" + limit +"&offset=" + offset, true);
+    searchProductRequest.setRequestHeader('Content-Type', 'application/xml');
+    searchProductRequest.send(null);
+    searchProductRequest.onreadystatechange = displayData;
 }
 document.addEventListener("DOMContentLoaded", init, false);
 
@@ -36,16 +37,16 @@ function viewItem(num) {
 
 function updateSearchResults(num) {
     console.log("Update Search Results: " + num);
-    localStorage.setItem("searchResultsPage",num * 10);
+    localStorage.setItem("offset",num * 10);
     window.location.href = "http://localhost:8080/searchresults";  
 }
 
 function displayData() {
     console.log("display data");
-    if (request.readyState === 4) {
-        if (request.status === 200) {
-            console.log(request.responseText);
-            obj = JSON.parse(request.responseText);
+    if (searchProductRequest.readyState === 4) {
+        if (searchProductRequest.status === 200) {
+            console.log(searchProductRequest.responseText);
+            obj = JSON.parse(searchProductRequest.responseText);
             for (var i = 0; i < 10; i++) {
                 itemSummaries = obj.itemSummaries[i];
                 console.log(obj.itemSummaries[i].image.imageUrl);

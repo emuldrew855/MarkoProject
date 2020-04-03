@@ -31,7 +31,8 @@ function getCharityCauses() {
 function searchProduct() {
     console.log('search product: ' + productSearch.value);
 	localStorage.setItem("searchProduct",productSearch.value);
-	localStorage.setItem("searchResultsPage", 10);
+	localStorage.setItem("limit", 10);
+	localStorage.setItem("offset", 0);
     window.location.href = "http://localhost:8080/searchresults";
 }
 
@@ -48,6 +49,8 @@ function charityCauseClick(clicked_id) {
 function showStatus() {
 	if (selectedCharityCauseRequest.readyState === 4) {
 			if (selectedCharityCauseRequest.status === 200) {
+				localStorage.setItem("searchIndex",0);
+   				localStorage.setItem("searchIndexMax", 10);
 				parser = new DOMParser();
                 xmlDoc = parser.parseFromString(selectedCharityCauseRequest.responseText, "text/xml");
                 window.location.href = "http://localhost:8080/charitycause";
