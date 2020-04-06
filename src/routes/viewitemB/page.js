@@ -32,7 +32,7 @@ function displayData() {
             console.log(getItemRequest.responseText);
             this.obj = JSON.parse(getItemRequest.responseText); 
             console.log(this.obj);
-            panel.innerHTML += "<h2> Charity Info </h2> <br>" 
+            panel.innerHTML += "<h2> Charity Info </h2> " 
                             + "<h3>" + this.obj.item.charity.charityName + "</h3>"
                             + "<img src = \"" +  this.obj.item.charity.logoURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
                             + "Mission: " + this.obj.item.charity.mission  +  "<br>"

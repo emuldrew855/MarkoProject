@@ -40,7 +40,13 @@ function displayData() {
             if(this.obj.item.charity == null) {
                 console.log("No charity data available");
             }
-            panel.innerHTML += "<h2> Product Info </h2>" 
+            panel.innerHTML += "<h2> Charity Info </h2> " 
+                            + "<h3>" + this.obj.item.charity.charityName + "</h3>"
+                            + "<img src = \"" +  this.obj.item.charity.logoURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
+                            + "Mission: " + this.obj.item.charity.mission  +  "<br>"
+                            + "Donation Percent: "+  this.obj.item.charity.donationPercent + "%"
+                            + "<hr>"
+                            + "<h2> Product Info </h2>" 
                             +"<h3>" + this.obj.item.title+ "</h3>" 
                             + "<img src = \"" +  this.obj.item.pictureDetails.pictureURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
                             + this.obj.item.primarycategory.categoryname

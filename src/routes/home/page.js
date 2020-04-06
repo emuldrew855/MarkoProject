@@ -31,8 +31,8 @@ function getCharityCauses() {
 function searchProduct() {
     console.log('search product: ' + productSearch.value);
 	localStorage.setItem("searchProduct",productSearch.value);
-	localStorage.setItem("limit", 10);
-	localStorage.setItem("offset", 0);
+	localStorage.setItem("searchResultsIndex",0);
+	localStorage.setItem("searchResultsIndexMax", 10);
     window.location.href = "http://localhost:8080/searchresults";
 }
 

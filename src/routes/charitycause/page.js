@@ -46,33 +46,6 @@ function displayData() {
                     + description + "<br>"
                     + "<button class=\"btn btn--primary\" onclick=\"selectCharity(" + i + ")\"> View Charity</button>" + "<br><hr>" ;
             }
-            pagination.innerHTML += "<nav class=\"pagination\" aria-labelledby=\"pagination-heading\" role=\"navigation\"> " + 
-            + "<span aria-live=\"polite\" role=\"status\">"
-            +"<h2 class=\"clipped\" id=\"pagination-heading\">Results Pagination - Page 1</h2> "
-            +" </span> "
-            + "<a aria-disabled=\"true\" aria-label=\"Previous Page\" class=\"pagination__previous\" href=\"http://www.ebay.com/sch/i.html?_nkw=guitars\"> "
-            + "<svg class=\"icon icon--pagination-prev\" focusable=\"false\" height=\"24\" width=\"24\" aria-hidden=\"true\"> "
-            + "<use xlink:href=\"#icon-pagination-prev\"></use>"
-            + "</svg>"
-            + "</a> "
-            + "<ol class=\"pagination__items\"> "
-            + "<li> "
-            + "<a  onClick=\"updateSearchResults(1)\" aria-current=\"page\" class=\"pagination__item\">1</a>"
-            + "</li>"
-            + "<li>"
-            + "<a onClick=\"updateSearchResults(2)\" class=\"pagination__item\">2</a>"
-            + "</li>"
-            + "<li>"
-            + "<a onClick=\"updateSearchResults(3)\"  class=\"pagination__item\">3</a>"
-            + "</li>"
-            + "..."
-            + "</ol>"
-            + "<a  onClick=\"updateSearchResults()\" aria-label=\"Next Page\" class=\"pagination__next\" href=\"http://localhost:9000/v1/SearchItem?searchTerm=Drone&limitOffset=20\">"
-            + "<svg class=\"icon icon--pagination-next\" focusable=\"false\" height=\"24\" width=\"24\" aria-hidden=\"true\"> ";
-            + "<use xlink:href=\"#icon-pagination-next\"></use>"
-            + "</svg>"
-            + "</a>"
-            + "</nav>"
         } else {
             panel.innerHTML += "No results found";
         }

@@ -65,6 +65,7 @@ function displayCharityItemData() {
                 for (var i = 0; i < 10; i++) {
                     charityItemsPanel.innerHTML += "<h4>" + charityItemsObj.items.items.item[i].title + " </h4> "
                         + "<img src =\"" + charityItemsObj.items.items.item[i].itemImageInfo[0].primaryImageURL + "\"" + ">" + "<br>"
+                        + "Price: £" + charityItemsObj.items.items.item[i].sellingStatus.currentPrice.value + "<br>"
                         + "<button class=\"btn btn--primary\" onclick=\"viewItem(" + i + ")\"> View Item!</button>" + "<br><hr>";
                     }
             }
