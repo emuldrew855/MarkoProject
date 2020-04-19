@@ -17,10 +17,18 @@ function getCharityCauses() {
 			var obj = JSON.parse(listCharityCausesRequest.responseText);
 			console.log('Get Charity Causes');
 			// Hardcoded for the 18 causes expected
+			test.innerHTML += " <ul class=\"gallery\">";
 			for (var i = 1; i<= 18; i++) {
 				console.log(obj[i]);
-				btnGroup.innerHTML += " " +  "<button id=\""+obj[i] +"\" onClick=\"charityCauseClick(this.id)\" class=\"btn btn--primary\" >" + obj[i] + "</button>";
-			  }
+				//btnGroup.innerHTML += " " +  "<button id=\""+obj[i] +"\" onClick=\"charityCauseClick(this.id)\" class=\"btn btn--primary\" >" + obj[i] + "</button>";
+				test.innerHTML += "<li>"
+				+ "<a onClick=charityCauseClick(" +  this.id + ")><span>"
+				+  "<img src = \"" + obj[i].image + "\" height=\"200\" width=\"200\">" + "<br>"
+				+ "</span></a>"
+				+ "<h2><a onClick=charityCauseClick("+ this.id +")> "+obj[i].name+" </a></h2>" 
+			    + "</li>"
+			}
+			test.innerHTML += "</ul>";
 			console.log(listCharityCausesRequest.responseText);
 		}else {
 			btnGroup.innerHTML += "No response from server currently";

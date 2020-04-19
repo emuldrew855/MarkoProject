@@ -4,6 +4,7 @@ var itemSummaries = [];
 
 function init() {
     this.searchTerm = localStorage.getItem("searchProduct");
+    document.getElementById("information").hidden = false;  
     document.getElementById("title").innerHTML += this.searchTerm;
     console.log("Search Term: " + this.searchTerm);
     searchProductRequest = new XMLHttpRequest();
@@ -44,6 +45,7 @@ function displayData() {
     console.log("display data");
     if (searchProductRequest.readyState === 4) {
         if (searchProductRequest.status === 200) {
+            document.getElementById("information").hidden = false;  
             obj = JSON.parse(searchProductRequest.responseText);
             console.log(obj);
             var searchIndex = localStorage.getItem("searchResultsIndex");
@@ -57,7 +59,7 @@ function displayData() {
             }
            console.log(obj);
         } else {
-            panel.innerHTML += "No results found";
+            document.getElementById("information").hidden = true;  
         }
     }
 }

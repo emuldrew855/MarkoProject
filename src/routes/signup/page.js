@@ -23,6 +23,7 @@ function userCreated() {
     if (request.readyState === 4) {
 		if (request.status === 200) {
             var signUp = request.responseText;
+            console.log(signUp);
             if(signUp == "UserSignedUp") {
                 console.log('User Signed Up');
                 document.getElementById("fail").hidden = true;
@@ -32,9 +33,13 @@ function userCreated() {
             }else if(signUp == "UserExists"){
                 console.log('User not signed up');
                 document.getElementById("error").hidden = false;
+                document.getElementById("fail").hidden = true;
+                document.getElementById("userSignedUp").hidden = true;
             }
         }else {
             document.getElementById("fail").hidden = false;
+            document.getElementById("userSignedUp").hidden = true;
+            document.getElementById("error").hidden = true;
         }
     }
 }

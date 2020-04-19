@@ -12,6 +12,15 @@
     </svg>
   </div>
     <section>
+     <h2>Search For Specific Charity</h2>
+      <span class="textbox">
+        <svg class="icon icon--search" focusable="false" width="16" height="16" aria-hidden="true">
+            <use xlink:href="#icon-search"></use>
+        </svg>
+        <input class="textbox__control" type="text" id="searchTerm" name="searchTerm" placeholder="Charity Name" />
+            <button class="btn btn--primary" type="submit" id="submit" onClick="searchCharity()">Submit</button>
+      </span>
+
       <h1 id="title" algin="center">Charity Cause </h1>
      <div id="panel">
      </div>

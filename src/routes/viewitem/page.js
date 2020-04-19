@@ -40,6 +40,13 @@ function displayData() {
             if(this.obj.item.charity == null) {
                 console.log("No charity data available");
             }
+            var pictureURL = "";
+            if(this.obj.item.pictureDetails.pictureURL == null) {
+                pictureURL =  this.obj.item.pictureDetails.galleryURL;            
+                console.log('Gallery URL: ' + pictureURL);
+            }else {
+                pictureURL =  this.obj.item.pictureDetails.pictureURL;   
+            }
             panel.innerHTML += "<h2> Charity Info </h2> " 
                             + "<h3>" + this.obj.item.charity.charityName + "</h3>"
                             + "<img src = \"" +  this.obj.item.charity.logoURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
@@ -48,8 +55,8 @@ function displayData() {
                             + "<hr>"
                             + "<h2> Product Info </h2>" 
                             +"<h3>" + this.obj.item.title+ "</h3>" 
-                            + "<img src = \"" +  this.obj.item.pictureDetails.pictureURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
-                            + this.obj.item.primarycategory.categoryname
+                            + "<img src = \"" +  this.obj.item.pictureDetails.galleryURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
+                            + "Category: " + this.obj.item.primarycategory.categoryname
                             + "<br>" + "£" + this.obj.item.startPrice;
 
         } else {

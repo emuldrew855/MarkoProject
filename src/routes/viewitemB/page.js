@@ -32,6 +32,7 @@ function displayData() {
             console.log(getItemRequest.responseText);
             this.obj = JSON.parse(getItemRequest.responseText); 
             console.log(this.obj);
+            console.log(this.obj.item.pictureDetails.galleryURL); 
             panel.innerHTML += "<h2> Charity Info </h2> " 
                             + "<h3>" + this.obj.item.charity.charityName + "</h3>"
                             + "<img src = \"" +  this.obj.item.charity.logoURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
@@ -40,7 +41,7 @@ function displayData() {
                             + "<hr>"
                             + "<h2> Product Info </h2>" 
                             + "<h3>" + this.obj.item.title+ "</h3>" 
-                            + "<img src = \"" +  this.obj.item.pictureDetails.pictureURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
+                            + "<img src = \"" +  this.obj.item.pictureDetails.galleryURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
                             + "Category: " + this.obj.item.primarycategory.categoryname + "<br>"
                             + "Condition: " + this.obj.item.conditionDescription + "<br>"
                             +  "Quantity Sold: " + this.obj.item.sellingStatus.quantitySold + "<br>"

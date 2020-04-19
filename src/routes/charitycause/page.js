@@ -1,6 +1,7 @@
 var charityId, obj;
 
 function init() {
+    charitySearch = document.getElementById("searchTerm");
     this.charityType = localStorage.getItem("charityType");
     console.log(this.charityType);
     document.getElementById("title").innerHTML = "Charity Cause: " + this.charityType;
@@ -24,6 +25,12 @@ function updateSearchResults(num) {
     var searchIndex = localStorage.getItem("searchIndex");
     localStorage.setItem("searchIndexMax", (parseFloat(searchIndex) + parseFloat(10)));
     window.location.href = "http://localhost:8080/charitycause";  
+}
+
+function searchCharity() {
+    console.log('search product: ' + charitySearch.value);
+	localStorage.setItem("charitySearch",charitySearch.value);
+    window.location.href = "http://localhost:8080/charitysearch"
 }
 
 function displayData() {

@@ -6,7 +6,7 @@ function init() {
 	numOfB = 0;
 	numOfCharity = 0;
 	numOfProduct = 0;
-    console.log("Admin Page");
+	console.log("Admin Page");
 
 	searchTypeRequest = new XMLHttpRequest();
 	searchTypeRequest.open("GET", 'https://localhost:9443/SearchType/GetSearchTypes', true);
@@ -95,7 +95,8 @@ function searchType() {
 				}			
 		console.log('Num of Charity: ' + numOfCharity);
 		console.log('Num of Product: ' + numOfProduct);
-		
+		var total = (numOfCharity + numOfProduct); 
+		searchContainerTotal.innerHTML +=  "Total: " + total; 
 		var searchTypeChart = new CanvasJS.Chart("searchChartContainer", {
 	animationEnabled: true,
 	title: {
@@ -107,8 +108,8 @@ function searchType() {
 		yValueFormatString: "##0.00\"%\"",
 		indexLabel: "{label} {y}",
 		dataPoints: [
-            {y: numOfCharity, label: "By Charity"},
-            {y: numOfProduct, label: "By Product"},
+            {y: (numOfCharity /total *100), label: "By Charity"},
+            {y: (numOfProduct/total * 100), label: "By Product"},
         ]
 	}]
 });
@@ -134,6 +135,8 @@ function displayData() {
 			}
 	console.log(numOfA);
 	console.log(numOfB);
+	var total = (numOfA + numOfB)
+	chartContainerTotal.innerHTML += "Total: " + total; 
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
@@ -146,8 +149,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		yValueFormatString: "##0.00\"%\"",
 		indexLabel: "{label} {y}",
 		dataPoints: [
-            {y: numOfA, label: "User Group A"},
-            {y: numOfB, label: "User Group B"},
+            {y: (numOfA / total *100), label: "User Group A"},
+            {y: (numOfB / total * 100) , label: "User Group B"},
         ]
 	}]
 });

@@ -47,10 +47,13 @@ function permissionGranted() {
                 console.log('Permission denied');
                 this.falseLogin = true;
                 document.getElementById("error").hidden = false;
-                document.getElementById("success").hidden = true;
+                document.getElementById("success").hidden = true; 
+                document.getElementById("information").hidden = true;  
             }
         }else {
             document.getElementById("information").hidden = false;
+            document.getElementById("error").hidden = true;
+            document.getElementById("success").hidden = true;
         }
     }
 }
