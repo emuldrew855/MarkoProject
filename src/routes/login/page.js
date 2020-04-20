@@ -82,36 +82,17 @@ function getAccessToken() {
 		if (getAuthUrlRequest.status === 200) {
             var authUrl = getAuthUrlRequest.responseText; 
             console.log('Auth URL: ' + authUrl);
-            window.open(authUrl, "_blank");
-            verifyUserWithAccessTokenRequest = new XMLHttpRequest(); 
-            verifyUserWithAccessTokenRequest.open("GET", "https://localhost:9443/auth/CheckAccessToken",true);
-            verifyUserWithAccessTokenRequest.setRequestHeader('Content-Type', 'application/xml');
-            verifyUserWithAccessTokenRequest.send(null);
-            verifyUserWithAccessTokenRequest.onreadystatechange = checkAccessToken;
+            window.open(authUrl, "_self");
+            var activeUserName = JSON.parse(getUserRequest.responseText); 
+            getActiveUserRequest = new XMLHttpRequest(); 
+            getActiveUserRequest.open("GET", "https://localhost:9443/auth/GetUser?username="+activeUserName.username,true);
+            getActiveUserRequest.setRequestHeader('Content-Type', 'application/xml');
+            getActiveUserRequest.send(null);
+            getActiveUserRequest.onreadystatechange = setNormalUser;
         }
     }
 }
 
-function checkAccessToken() {
-    if (verifyUserWithAccessTokenRequest.readyState === 4) {
-		if (verifyUserWithAccessTokenRequest.status === 200) {
-            var verifyUserAcessTokenResponse = verifyUserWithAccessTokenRequest.responseText;
-            if(verifyUserAcessTokenResponse =="ValidAccessToken") {
-                console.log("Valid Access Token");
-                var activeUserName = JSON.parse(getUserRequest.responseText); 
-                getActiveUserRequest = new XMLHttpRequest(); 
-                getActiveUserRequest.open("GET", "https://localhost:9443/auth/GetUser?username="+activeUserName.username,true);
-                getActiveUserRequest.setRequestHeader('Content-Type', 'application/xml');
-                getActiveUserRequest.send(null);
-                getActiveUserRequest.onreadystatechange = setNormalUser;
-                document.getElementById("NoAccessToken").hidden = true;
-            }else {
-                console.log("No Access Token");
-                document.getElementById("NoAccessToken").hidden = false;
-            }
-        }
-    }
-}
 
 function setAdminUser() {
     if (getAdminUserRequest.readyState === 4) {
@@ -121,7 +102,7 @@ function setAdminUser() {
             if(adminUser.username == "admin") {
                 console.log("Set Admin User");
                 localStorage.setItem("activeUser",JSON.stringify(adminUser));
-                window.location.href = "http://localhost:8080/admin";
+                window.location.href = "https://localhost:8080/admin";
             }else {
                 console.log("Not Admin user");
             }
@@ -138,7 +119,6 @@ function setNormalUser() {
             var activeUser = JSON.parse(getActiveUserRequest.responseText); 
             console.log(activeUser);
             localStorage.setItem("activeUser",JSON.stringify(activeUser));
-            window.location.href = "http://localhost:8080/home"; 
             document.getElementById("success").hidden = false;
         }
     }

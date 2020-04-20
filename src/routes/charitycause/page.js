@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", init, false);
 function selectCharity(num) {
     console.log('Select Charity');
     localStorage.setItem("nonprofitid", obj[num].nonprofit_id);
-    window.location.href = "http://localhost:8080/viewcharity";
+    window.location.href = "https://localhost:8080/viewcharity";
 }
 
 function updateSearchResults(num) {
@@ -24,13 +24,13 @@ function updateSearchResults(num) {
     localStorage.setItem("searchIndex",num * 10);
     var searchIndex = localStorage.getItem("searchIndex");
     localStorage.setItem("searchIndexMax", (parseFloat(searchIndex) + parseFloat(10)));
-    window.location.href = "http://localhost:8080/charitycause";  
+    window.location.href = "https://localhost:8080/charitycause";  
 }
 
 function searchCharity() {
     console.log('search product: ' + charitySearch.value);
 	localStorage.setItem("charitySearch",charitySearch.value);
-    window.location.href = "http://localhost:8080/charitysearch"
+    window.location.href = "https://localhost:8080/charitysearch"
 }
 
 function displayData() {

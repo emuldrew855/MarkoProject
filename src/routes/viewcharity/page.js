@@ -47,9 +47,9 @@ function viewItem(num) {
     this.user = JSON.parse(jsonString);
     console.log(this.user.userGroup);
     if(this.user.userGroup == "A") {
-        window.location.href = "http://localhost:8080/viewitem";
+        window.location.href = "https://localhost:8080/viewitem";
     }else {
-        window.location.href ="http://localhost:8080/viewitemB";
+        window.location.href ="https://localhost:8080/viewitemB";
     }
 }
 

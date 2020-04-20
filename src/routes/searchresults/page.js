@@ -27,9 +27,9 @@ function viewItem(num) {
     console.log(itemId);
     localStorage.setItem("viewItemId", itemId);
     if(this.user.userGroup == "A") {
-        window.location.href = "http://localhost:8080/viewitem";
+        window.location.href = "https://localhost:8080/viewitem";
     }else {
-        window.location.href ="http://localhost:8080/viewitemB";
+        window.location.href ="https://localhost:8080/viewitemB";
     }
 }
 
@@ -38,7 +38,7 @@ function updateSearchResults(num) {
     localStorage.setItem("searchResultsIndex",num * 10);
     var searchIndex = localStorage.getItem("searchResultsIndex");
     localStorage.setItem("searchResultsIndexMax", (parseFloat(searchIndex) + parseFloat(10)));
-    window.location.href = "http://localhost:8080/searchresults";  
+    window.location.href = "https://localhost:8080/searchresults";  
 }
 
 function displayData() {

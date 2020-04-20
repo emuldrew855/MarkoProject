@@ -29,7 +29,7 @@ function userCreated() {
                 document.getElementById("fail").hidden = true;
                 document.getElementById("error").hidden = true;
                 document.getElementById("userSignedUp").hidden = false;
-                window.location.href = "http://localhost:8080/login";
+                window.location.href = "https://localhost:8080/login";
             }else if(signUp == "UserExists"){
                 console.log('User not signed up');
                 document.getElementById("error").hidden = false;

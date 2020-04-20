@@ -1,0 +1,12 @@
+{
+    "dependencies": [
+      "require: jquery",
+      "@ebay/skin",
+      "@ebay/skin/field",
+      "@ebay/skin/textbox", 
+      "@ebay/skin/button",
+      "@ebay/skin/notice",
+      "page.js"
+    ]
+  }
+  

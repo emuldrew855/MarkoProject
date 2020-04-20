@@ -41,7 +41,7 @@ function signOutSubmission() {
         if (logOutRequest.status === 200) {
             console.log("Sign out confirmed");
             localStorage.setItem("activeUser", null);
-            window.location.href = "http://localhost:8080";
+            window.location.href = "https://localhost:8080";
         }
     }
 }

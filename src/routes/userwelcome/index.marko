@@ -1,0 +1,37 @@
+<site-layout>
+ <@title>Sample Front End</@title>
+  <@content>
+  <h1 id="title" algin="center">Welcome </h1>
+    <div hidden>
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <symbol viewBox="0 0 24 24" id="icon-information-filled">
+          <path fill="#3665f3" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12C23.994 5.375 18.625.006 12 0zm0 10a1 1 0 011 1v6a1 1 0 01-2 0v-6a1 1 0 011-1zm0-4a1 1 0 110 2 1 1 0 010-2z"></path>
+      </symbol>
+    </svg>
+</div>
+    <section>
+    <div  id="success">
+      <section class="page-notice page-notice--celebration" role="region" aria-labelledby="celebration-status">
+      <div class="section-notice__content">
+          <p>Please click <a href="https://localhost:8080/home"> here </a> to view the home page </p>
+        </div>
+      </section>
+    </div>
+
+     <div id="NoAccessToken"> 
+      <section class="page-notice page-notice--information" role="region" aria-labelledby="information-status">
+        <h4 class="page-notice__status" id="information-status">
+            <svg class="icon icon--information-filled" focusable="false" height="24" width="24" aria-label="Information">
+                <use xlink:href="#icon-information-filled"></use>
+            </svg>
+        </h4>
+        <div class="page-notice__content">
+            <p> Your access token has not yet been authorized. Please enter your details on Ebay and try to log in again </p>
+        </div>
+      </section>
+    </div>
+
+    
+    </section>
+  </@content>
+</site-layout>
