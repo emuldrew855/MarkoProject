@@ -7,7 +7,7 @@
   "dependencies": {
     "@ebay/ebayui-core": "^4.3.1",
     "@ebay/skin": "^10",
-    "axios": "^0.16.2",
+    "axios": "^0.18.1",
     "chromedriver": "^77.0.0",
     "express": "^4.17.1",
     "jquery": "^2",
