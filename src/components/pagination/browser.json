@@ -3,8 +3,7 @@
       "require: jquery",
       "@ebay/skin",
       "@ebay/skin/pagination",
-      "page.js",
-      "custom.less"
+      "page.js"
     ]
   }
   

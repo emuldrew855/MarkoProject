@@ -1,10 +1,21 @@
-<site-layout>
+<site-layout onbeforeunload="return exit()">
  <@title>Sample Front End</@title>
   <@content>
     <section>
       <h1 id="title" algin="center">View Item </h1>
      <div id="panel">
      </div>
+     <button class="btn btn--primary" onclick="ebayItem()"> View Item On Ebay</button>   
+      <script language="JavaScript">
+        function exit()
+        {
+          request = new XMLHttpRequest();
+          request.open("POST", 'http://localhost:9000/UserActions/AddUserAction'+'?userGroup='+this.user.userGroup + "&viewOnEbay="+false, true);
+          request.setRequestHeader('Content-Type', 'application/xml');
+          request.send(null);
+          return "return confirmExit()";
+        }
+    </script> 
     </section>
   </@content>
 </site-layout>

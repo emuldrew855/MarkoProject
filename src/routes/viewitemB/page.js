@@ -1,5 +1,4 @@
-var itemId, obj, title, viewItemUrl;
-
+var itemId;
 
 function init() {
     console.log('View Item page');
@@ -12,11 +11,6 @@ function init() {
 	getItemRequest.onreadystatechange = displayData;
 }
 document.addEventListener("DOMContentLoaded", init, false);
-
-function confirmExit() {
-    console.log("Confirm exit");
-    alert.window("Are you sure you want to do this?");
-}
 
 function ebayItem(){
     console.log("Ebay Item");
@@ -35,18 +29,10 @@ function ebayItem(){
 function displayData() {
     if (getItemRequest.readyState === 4) {
         if (getItemRequest.status === 200) {
+            console.log(getItemRequest.responseText);
             this.obj = JSON.parse(getItemRequest.responseText); 
             console.log(this.obj);
-            if(this.obj.item.charity == null) {
-                console.log("No charity data available");
-            }
-            var pictureURL = "";
-            if(this.obj.item.pictureDetails.pictureURL == null) {
-                pictureURL =  this.obj.item.pictureDetails.galleryURL;            
-                console.log('Gallery URL: ' + pictureURL);
-            }else {
-                pictureURL =  this.obj.item.pictureDetails.pictureURL;   
-            }
+            console.log(this.obj.item.pictureDetails.galleryURL); 
             panel.innerHTML += "<h2> Charity Info </h2> " 
                             + "<h3>" + this.obj.item.charity.charityName + "</h3>"
                             + "<img src = \"" +  this.obj.item.charity.logoURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
@@ -54,13 +40,16 @@ function displayData() {
                             + "Donation Percent: "+  this.obj.item.charity.donationPercent + "%"
                             + "<hr>"
                             + "<h2> Product Info </h2>" 
-                            +"<h3>" + this.obj.item.title+ "</h3>" 
+                            + "<h3>" + this.obj.item.title+ "</h3>" 
                             + "<img src = \"" +  this.obj.item.pictureDetails.galleryURL +"height=\"300\" width=\"300\"" +  "\">" + "<br>"
-                            + "Category: " + this.obj.item.primarycategory.categoryname
-                            + "<br>" + "£" + this.obj.item.startPrice;
+                            + "Category: " + this.obj.item.primarycategory.categoryname + "<br>"
+                            + "Condition: " + this.obj.item.conditionDescription + "<br>"
+                            +  "Quantity Sold: " + this.obj.item.sellingStatus.quantitySold + "<br>"
+                            + "Quantity: " + this.obj.item.quantity + "<br>"
+                            + "£" + this.obj.item.startPrice;
 
         } else {
-            panel.innerHTML += "No results found";
+                panel.innerHTML += "No results found";
+            }
         }
-    }
 }

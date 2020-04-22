@@ -1,0 +1,51 @@
+<!-- import * from "./helper.js" as BACKEND_HELPER;
+
+class {
+    onCreate(input) {
+        console.log("This Input: " + input);
+        this.state = { };
+        this.state.currentPage = input.currentPage;
+        this.state.currentOffSet = input.currentOffset;
+        this.state.currentLimit = input.currentLimit;
+        this.state.numElementsPerpage = input.numElementsPerpage; 
+        console.log("Pagination");
+        console.log(this.state.searchTerm);
+    }
+
+    onPaginationClicked(event, pageNum, offset, limit, numPerPage) {
+        // 
+        BACKEND_HELPER.fetchPage(pageNum, offset, limit, numPerPage, function(res) {
+            // We got a response!
+            this.state.currentPage = res.
+        })
+    }
+}
+
+
+<nav class="pagination" aria-labelledby="pagination-heading" role="navigation">
+    <span aria-live="polite" role="status">
+        <h2 class="clipped" id="pagination-heading">Results Pagination - Page 1</h2>
+    </span>
+    <a aria-disabled="true" aria-label="Previous Page" class="pagination__previous" href="http://www.ebay.com/sch/i.html?_nkw=guitars">
+        <svg class="icon icon--pagination-prev" focusable="false" height="24" width="24" aria-hidden="true">
+            <use xlink:href="#icon-pagination-prev"></use>
+        </svg>
+    </a>
+    <ol class="pagination__items">
+        <li>
+            <a aria-current="page" href="https://localhost:9443/ebay/SearchItem?searchTerm=Drone&limitOffset=10" class="pagination__item">1</a>
+        </li>
+        <li>
+            <a href="https://localhost:9443/ebay/SearchItem?searchTerm=Drone&limitOffset=20" class="pagination__item">2</a>
+        </li>
+        <li>
+            <a href="https://localhost:9443/ebay/SearchItem?searchTerm=Drone&limitOffset=30" class="pagination__item">3</a>
+        </li>
+        ...
+    </ol>
+    <a aria-label="Next Page" class="pagination__next" href="http://localhost:9000/v1/SearchItem?searchTerm=Drone&limitOffset=20">
+        <svg class="icon icon--pagination-next" focusable="false" height="24" width="24" aria-hidden="true">
+            <use xlink:href="#icon-pagination-next"></use>
+        </svg>
+    </a>
+</nav> -->

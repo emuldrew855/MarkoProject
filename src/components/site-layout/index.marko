@@ -3,26 +3,33 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>
-      <${input.title}/>
-    </title>
   </head>
   <body>
     <header>
       <img.logo src="https://theturingtrust.files.wordpress.com/2018/03/ebay-charity.jpg" alt="marko logo"/>
-      <h1>
-        <${input.title}/>
-      </h1>
+    <div id="userNotSignedIn">
       <nav.menu>
-        <a href="/home">Home</a>
-        <a href="/getitem">Get Item</a>
-        <a href="/nonprofit"> Find Non Profit </a>
-        <a href="/findcharityitems"> Find Charity Items </a>
-        <a href="/advancedcharitysearch"> Advanced Charity Search </a>
+        <a href="/login"> Log in </a>
       </nav>
+    </div>
+
+    <div id="userSignedIn">
+      <nav.menu>
+        <a href="/home"> Home </a>
+        <a onClick="signOut()"> Sign Out </a>
+      </nav>
+    </div>
+
+    <div id="adminUserSignIn"> 
+       <nav.menu>
+        <a onClick="signOut()"> Sign Out </a>
+      </nav>
+    </div>
     </header>
     <div.content>
       <${input.content}/>
     </div>
+<br> <br> <br> <br> <br> <br> <br><br><br><br>
+ <div class="footer">Copyright © 1995-2020 eBay Inc. All Rights Reserved. User Agreement, Privacy, Cookies and AdChoice.</div>
   </body>
 </html>

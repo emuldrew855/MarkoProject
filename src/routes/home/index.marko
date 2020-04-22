@@ -1,18 +1,38 @@
+
+
 <site-layout>
  <@title>Sample Front End</@title>
   <@content>
+  <div hidden>
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <symbol viewBox="0 0 22 22" id="icon-search">
+            <path d="M2 9a7 7 0 1114 0A7 7 0 012 9m19.703 11.29l-5.67-5.67-.008-.003A8.954 8.954 0 0018 9a9 9 0 00-9-9 9 9 0 00-9 9 9 9 0 009 9 8.958 8.958 0 005.66-2.007l5.663 5.717c.19.187.445.292.71.29a1 1 0 00.67-1.71"></path>
+        </symbol>
+        <symbol viewBox="0 0 57 57" id="icon-search-large">
+            <path d="M41.095 37.546l15.17 15.17a2.51 2.51 0 11-3.55 3.549l-15.169-15.17A22.993 22.993 0 0123.09 46.18C10.338 46.18 0 35.842 0 23.09S10.338 0 23.09 0s23.09 10.338 23.09 23.09c0 5.472-1.904 10.5-5.085 14.456zM23.09 41.16c9.98 0 18.07-8.09 18.07-18.07S33.07 5.02 23.09 5.02 5.02 13.11 5.02 23.09s8.09 18.07 18.07 18.07z"></path>
+        </symbol>
+        <symbol viewBox="0 0 14 14" id="icon-search-small">
+            <path d="M2 5.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0m11.76 6.85l-.021-.01-3.71-3.681-.025-.008A5.465 5.465 0 0011 5.5 5.5 5.5 0 105.5 11a5.47 5.47 0 003.118-.972l3.732 3.732a1 1 0 001.41-1.41"></path>
+        </symbol>
+    </svg>
+</div>
     <section>
       <div id="panel"/>
-      <h2>Search Product</h2>
-      <form action="http://localhost:9000/v1/SearchItem/" method="GET" target="_blank">
-        <input type="text" id="searchTerm" name="searchTerm" placeholder="Product Name"/>
-        <button type="submit" id="submit" onClick="searchProduct()">Submit</button>
-      </form>
+      <h2>Search By Product</h2>
+      <span class="textbox">
+        <svg class="icon icon--search" focusable="false" width="16" height="16" aria-hidden="true">
+            <use xlink:href="#icon-search"></use>
+        </svg>
+        <input class="textbox__control" type="text" id="searchTerm" name="searchTerm" placeholder="Product Name" />
+            <button class="btn btn--primary" type="submit" id="submit" onClick="searchProduct()">Submit</button>
+      </span>
     <br>
-
-    <div id="btnGroup">
-
-    </div>
+    <br>
+    <h2>Search By Charity Cause</h2>
+<ul id="test"  class="gallery">
+ </ul>    
+    <br><br><br><br>
     </section>
   </@content>
+
 </site-layout>
