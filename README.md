@@ -1,52 +1,15 @@
-# Marko Starter Demo
-This repo demos the basic features of [`marko-starter`](https://github.com/marko-js/marko-starter).
+# General Info
+This is the frontend for a project made for the eBay For Charity program. It was written in MarkoJS and is used to communicated with the backend. 
 
-## Install
+## How to set up the Frontend
+1) Download Node.js and set node as one of your environmental variables on your computer: https://nodejs.org/en/ . This site provides a good tutorial for this https://www.journaldev.com/7402/node-js-environment-setup-node-js-installation
 
-```bash
-npm install
-```
+2) Navigate to your project folder where you cloned the front-end and run ‘npm install’ to get the node modules required for the project. You will also be required to have git installed on your computer to retrieve all node modules.  
 
-## Starting the server
+3) Navigate to your project folder where you cloned the front-end. Type the command “node server.js and you should see the following
 
-```bash
-npm start
-```
+4) Currently you will need to click Windows key and search run and enter ‘chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security’. This disables the CORS policy on chrome does not fully have the correct security policies in place.
 
-Start the server in production mode (minification enabled, etc.):
+5) Then navigate to https:\\localhost:8080 on the chrome tab which has opened. 
 
-```bash
-NODE_ENV=production npm start
-```
-
-## Build a static site
-Build the project in production mode:
-
-```bash
-npm run build
-```
-
-By default, the generated static site will be placed in `dist/`.
-
-## Feature Demos
-
-### Live reload
-
-Change a file and the server will restart and the browser will refresh.  Hot reload is enabled for certain files.
-
-### Components
-
-See example components and how they can be scoped to pages or the whole site.
-
-### Routing
-
-Learn to create routes and use route parameters.
-
-### Layouts
-
-Learn to create components that can be passed content and include that content in their own template.
-
-### Styles and Images
-
-Learn how to use styles within a component and how to use resources (like images) in a component.
-
+From this point you should be free to access the site, although it won't hit the API points in the backend unless you have set that up correctly. More information on that can be found here: https://github.com/emuldrew855/backend
