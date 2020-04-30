@@ -10,7 +10,7 @@
     "axios": "^0.16.2",
     "chromedriver": "^77.0.0",
     "express": "^4.17.1",
-    "jquery": "^2",
+    "jquery": "^3",
     "marko": "^4.13.10",
     "marko-starter": "^2.0.4",
     "marko-widgets": "^7"
